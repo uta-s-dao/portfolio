@@ -8,6 +8,17 @@
   position: relative;
 }
 
+.button {
+  position: absolute;
+  bottom: 7vh;
+  font-size: 3vh;
+  gap: 4vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: black;
+}
+
 .name {
   color: black;
   font-size: 8vh;
