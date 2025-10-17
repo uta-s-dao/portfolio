@@ -8,18 +8,7 @@ export default function DesktopComponent() {
         <div className={styles.name}>Yuta Saruwatari</div>
         <div className={styles.job}>Software Engineer</div>
 
-        <div
-          style={{
-            position: "absolute",
-            bottom: "10vh",
-            fontSize: "3vh",
-            gap: "4vh",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            color: "black",
-          }}
-        >
+        <div className={styles.button}>
           <Button href='desktop/works'>Works</Button>
           <Button href='desktop/about'>About</Button>
         </div>
