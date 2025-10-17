@@ -1,14 +1,52 @@
+.topContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
 .name {
   color: black;
-  font-size: 50px;
+  font-size: 8vh;
+}
+
+.job {
+  color: black;
+  font-size: 3vh;
+}
+
+.buttonLink {
+  text-decoration: none;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.buttonLink:hover {
+  background-color: #959697;
 }
 
 .mobileOnly {
   display: block;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 .desktopOnly {
   display: none;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {
