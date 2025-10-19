@@ -20,11 +20,29 @@
 }
 
 .buttonLink {
+  position: relative;
   text-decoration: none;
   color: black;
-  padding: 8px 16px;
+  padding: 16px 16px;
   border-radius: 4px;
   transition: background-color 0.3s;
+}
+
+.buttonLink::after {
+  position: absolute;
+  left: 16px;
+  content: "";
+  width: calc(100% - 32px);
+  height: 2px;
+  background-color: black;
+  bottom: 8px;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.3s;
+}
+
+.buttonLink:hover::after {
+  transform: scale(1, 1);
 }
 
 .name {
@@ -37,12 +55,8 @@
   font-size: 3vh;
 }
 
-.buttonLink:hover {
-  text-decoration: underline;
-}
-
-.buttonActive {
-  text-decoration: underline;
+.buttonActive::after {
+  transform: scale(1, 1);
 }
 
 .mobileOnly {
