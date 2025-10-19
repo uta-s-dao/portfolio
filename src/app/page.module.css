@@ -38,19 +38,11 @@
 }
 
 .buttonLink:hover {
-  background-color: #959697;
+  text-decoration: underline;
 }
 
 .buttonActive {
   text-decoration: underline;
-}
-
-.navigation {
-  color: black;
-  font-size: 4vh;
-  top: 2vh;
-  right: 3vw;
-  position: absolute;
 }
 
 .mobileOnly {

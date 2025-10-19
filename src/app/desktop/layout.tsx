@@ -1,5 +1,6 @@
 import NavButton from "../components/NavButton";
 import styles from "./page.module.css";
+
 export default function RootLayout({
   children,
 }: Readonly<{
