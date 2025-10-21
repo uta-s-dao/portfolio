@@ -4,3 +4,28 @@
   height: 10vh;
   position: relative;
 }
+
+.myname {
+  font-size: 5vh;
+  padding-left: 3vw;
+  padding-top: 5vh;
+}
+
+.detail {
+  font-size: 3vh;
+  padding-left: 3vw;
+  padding-top: 2vh;
+}
+
+.icon {
+  width: 100vw;
+  display: flex;
+  padding-left: 3vw;
+  padding-top: 10vh;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.icona {
+  margin-right: 3vw;
+}
