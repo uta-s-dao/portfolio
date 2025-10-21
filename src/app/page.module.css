@@ -19,6 +19,32 @@
   color: black;
 }
 
+.buttonLink {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  padding: 16px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.buttonLink::after {
+  position: absolute;
+  left: 16px;
+  content: "";
+  width: calc(100% - 32px);
+  height: 2px;
+  background-color: black;
+  bottom: 8px;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.3s;
+}
+
+.buttonLink:hover::after {
+  transform: scale(1, 1);
+}
+
 .name {
   color: black;
   font-size: 8vh;
@@ -29,16 +55,8 @@
   font-size: 3vh;
 }
 
-.buttonLink {
-  text-decoration: none;
-  color: black;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.buttonLink:hover {
-  background-color: #959697;
+.buttonActive::after {
+  transform: scale(1, 1);
 }
 
 .mobileOnly {
