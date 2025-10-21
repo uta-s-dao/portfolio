@@ -29,16 +29,16 @@ export default function DesktopAboutPage() {
       </div>
       <div className={styles.icon}>
         <Link href='https://github.com/uta-s-dao' className={styles.icona}>
-          <BsGithub size={70} />
+          <BsGithub size={70} color='rgb(0,100,0)' />
         </Link>
         <Link href='https://x.com/super___thick' className={styles.icona}>
-          <BsTwitterX size={70} />
+          <BsTwitterX size={70} color='rgb(0,100,0)' />
         </Link>
         <Link
           href='https://www.facebook.com/share/1DRV8gWVED/?mibextid=wwXIfr'
           className={styles.icona}
         >
-          <BsFacebook size={70} />
+          <BsFacebook size={70} color='rgb(0,100,0)' />
         </Link>
       </div>
     </>
