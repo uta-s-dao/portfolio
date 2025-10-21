@@ -6,6 +6,11 @@ export default function DesktopAboutPage() {
   return (
     <>
       <div className={styles.myname}>Yuta Saruwatari</div>
+      <div className={styles.detail}>
+        Hey, My name is Yuta Saruwatari. I specialize in building web
+        applications and have a passion for creating seamless user experiences
+        and music.
+      </div>
       <div className={styles.myname}>Skills</div>
       <div className={styles.detail}>
         Frontend : HTML / CSS / Tailwindcss / JavaSript / TypeScript / React /
