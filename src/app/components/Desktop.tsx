@@ -9,8 +9,8 @@ export default function DesktopComponent() {
         <div className={styles.job}>Software Engineer</div>
 
         <div className={styles.button}>
-          <Button href='desktop/works'>Works</Button>
-          <Button href='desktop/about'>About</Button>
+          <Button href='works'>Works</Button>
+          <Button href='about'>About</Button>
         </div>
       </div>
     </div>

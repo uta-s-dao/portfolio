@@ -22,13 +22,13 @@ export default function NavButton() {
     <>
       <div className={styles.title}>{currentPath}</div>
       <div className={styles.navigation}>
-        <Button href='/' active={currentPath === 'Home' || currentPath === ''}>
+        <Button href='/' active={currentPath === "Home" || currentPath === ""}>
           Home
         </Button>
-        <Button href='http://localhost:3000/desktop/works' active={currentPath === 'Works'}>
+        <Button href='works' active={currentPath === "Works"}>
           Works
         </Button>
-        <Button href='http://localhost:3000/desktop/about' active={currentPath === 'About'}>
+        <Button href='about' active={currentPath === "About"}>
           About
         </Button>
       </div>
