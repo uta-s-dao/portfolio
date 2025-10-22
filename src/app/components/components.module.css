@@ -76,3 +76,33 @@
 .icona:hover {
   transform: translateY(-5px) scale(1.2);
 }
+
+.mobileOnly {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: whitesmoke;
+}
+
+.desktopOnly {
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+}
+
+@media (min-width: 768px) {
+  .mobileOnly {
+    display: none;
+  }
+  .desktopOnly {
+    display: block;
+  }
+}

@@ -3,7 +3,7 @@ import Button from "./Button";
 
 export default function MobileComponent() {
   return (
-    <>
+    <div className={styles.mobileOnly}>
       <div className={styles.topContainer}>
         <div style={{ fontSize: "6vh" }}>Yuta Saruwatari</div>
         <div style={{ fontSize: "3vh" }}>Software Engineer</div>
@@ -12,6 +12,6 @@ export default function MobileComponent() {
           <Button href='desktop/about'>About</Button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
