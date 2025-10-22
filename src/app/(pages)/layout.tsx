@@ -1,5 +1,5 @@
 import NavButton from "../components/NavButton";
-import styles from "./page.module.css";
+import styles from "../components/components.module.css";
 
 export default function RootLayout({
   children,
