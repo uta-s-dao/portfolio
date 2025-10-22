@@ -30,3 +30,49 @@
   color: rgb(85, 84, 84);
   background-color: whitesmoke;
 }
+
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 10vh;
+  position: relative;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+}
+
+.myname {
+  font-size: 5vh;
+  padding-left: 3vw;
+  padding-top: 5vh;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+}
+
+.detail {
+  font-size: 3vh;
+  padding-left: 3vw;
+  padding-top: 2vh;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+}
+
+.icon {
+  width: 100vw;
+  display: flex;
+  padding-left: 3vw;
+  padding-top: 12vh;
+  justify-content: center;
+  gap: 5rem;
+  background-color: whitesmoke;
+}
+
+.icona {
+  margin-right: 3vw;
+  background-color: whitesmoke;
+  transition: all 0.3s ease;
+}
+
+.icona:hover {
+  transform: translateY(-5px) scale(1.2);
+}
