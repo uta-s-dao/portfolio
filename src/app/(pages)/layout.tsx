@@ -1,4 +1,5 @@
-import NavButton from "../components/NavButton";
+import DesktopNavButton from "../components/DesktopNavButton";
+import MobileNavButton from "../components/MobileNavButton";
 import styles from "../components/components.module.css";
 
 export default function RootLayout({
@@ -10,7 +11,8 @@ export default function RootLayout({
     <>
       <div className={styles.container}>
         <div>
-          <NavButton />
+          <DesktopNavButton />
+          <MobileNavButton />
         </div>
       </div>
       <div>{children}</div>

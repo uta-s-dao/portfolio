@@ -98,11 +98,29 @@
   background-color: whitesmoke;
 }
 
+.mobileNav {
+  display: block;
+  width: 100vw;
+  background-color: whitesmoke;
+}
+
+.desktopNav {
+  display: none;
+  width: 100vw;
+  background-color: whitesmoke;
+}
+
 @media (min-width: 768px) {
   .mobileOnly {
     display: none;
   }
   .desktopOnly {
+    display: block;
+  }
+  .mobileNav {
+    display: none;
+  }
+  .desktopNav {
     display: block;
   }
 }
