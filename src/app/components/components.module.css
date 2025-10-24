@@ -7,6 +7,15 @@
   background-color: whitesmoke;
 }
 
+.mobiletitle {
+  font-size: 6vh;
+  font-weight: bold;
+  padding-left: 3vw;
+  padding-top: 1vh;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+}
+
 .navigation {
   color: rgb(85, 84, 84);
   background-color: whitesmoke;
@@ -30,7 +39,6 @@
   color: rgb(85, 84, 84);
   background-color: whitesmoke;
 }
-
 
 .container {
   display: flex;
@@ -104,10 +112,37 @@
   background-color: whitesmoke;
 }
 
+.mobilenavlocation {
+  display: flex;
+  padding-right: 3vw;
+}
+
+.menubutton {
+  margin-left: auto;
+  margin-right: 2vw;
+  padding-top: 1vh;
+  border: none;
+  background-color: whitesmoke;
+  z-index: 1000;
+}
+
 .desktopNav {
   display: none;
   width: 100vw;
   background-color: whitesmoke;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(245, 245, 245, 0.7); /* whitesmokeの半透明 */
+  backdrop-filter: blur(5px); /* 背景をぼかす */
+  -webkit-backdrop-filter: blur(5px); /* Safari対応 */
+  z-index: 998;
+  animation: fadeIn 0.3s ease;
 }
 
 @media (min-width: 768px) {
