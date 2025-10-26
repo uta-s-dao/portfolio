@@ -1,4 +1,5 @@
 import { Righteous } from "next/font/google";
+import "./globals.css";
 // Righteous, Black_Ops_One
 const righteous = Righteous({ weight: "400", subsets: ["latin"] }); // レトロゲーム風
 

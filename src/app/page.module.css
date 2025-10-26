@@ -6,28 +6,61 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  background-color: whitesmoke;
 }
 
-.name {
-  color: black;
-  font-size: 8vh;
-}
-
-.job {
-  color: black;
+.button {
+  position: absolute;
+  bottom: 7vh;
   font-size: 3vh;
+  gap: 4vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
 }
 
 .buttonLink {
+  position: relative;
   text-decoration: none;
-  color: black;
-  padding: 8px 16px;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+  padding: 16px 16px;
   border-radius: 4px;
   transition: background-color 0.3s;
 }
 
-.buttonLink:hover {
-  background-color: #959697;
+.buttonLink::after {
+  position: absolute;
+  left: 16px;
+  content: "";
+  width: calc(100% - 32px);
+  height: 2px;
+  background-color: rgb(85, 84, 84);
+  bottom: 8px;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.3s;
+}
+
+.buttonLink:hover::after {
+  transform: scale(1, 1);
+}
+.buttonActive::after {
+  transform: scale(1, 1);
+}
+
+.name {
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+  font-size: 8vh;
+}
+
+.job {
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+  font-size: 3vh;
 }
 
 .mobileOnly {
@@ -36,6 +69,7 @@
   padding: 0;
   width: 100vw;
   height: 100vh;
+  background-color: whitesmoke;
 }
 
 .desktopOnly {
@@ -47,6 +81,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: whitesmoke;
 }
 
 @media (min-width: 768px) {
