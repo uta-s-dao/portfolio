@@ -119,7 +119,7 @@
 
 .menubutton {
   margin-left: auto;
-  margin-right: 2vw;
+  padding-right: 4vw;
   padding-top: 1vh;
   border: none;
   background-color: whitesmoke;
@@ -143,6 +143,72 @@
   -webkit-backdrop-filter: blur(5px); /* Safari対応 */
   z-index: 998;
   animation: fadeIn 0.3s ease;
+}
+
+.sideMenu {
+  position: fixed;
+  top: 0;
+  right: -150px; /* 右から出る場合 */
+  width: 150px;
+  height: 100vh;
+  background: whitesmoke;
+  transition: right 0.3s ease;
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.sideMenu.open {
+  right: 0;
+}
+
+.menuList {
+  list-style: none;
+  padding: 2rem 0;
+  margin-top: 3vh;
+}
+
+.menuItem {
+  margin: 0;
+}
+
+.menuLink {
+  position: relative;
+  display: block;
+  padding: 8px 16px;
+  color: #333;
+  text-decoration: none;
+}
+
+.menuText {
+  position: relative;
+  display: inline-block;
+}
+
+.menuText::after {
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: rgb(85, 84, 84);
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.3s;
+}
+
+.active  .menuText::after {
+  transform: scale(1, 1);
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (min-width: 768px) {

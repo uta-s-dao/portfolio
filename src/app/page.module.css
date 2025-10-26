@@ -47,6 +47,9 @@
 .buttonLink:hover::after {
   transform: scale(1, 1);
 }
+.buttonActive::after {
+  transform: scale(1, 1);
+}
 
 .name {
   color: rgb(85, 84, 84);
@@ -58,10 +61,6 @@
   color: rgb(85, 84, 84);
   background-color: whitesmoke;
   font-size: 3vh;
-}
-
-.buttonActive::after {
-  transform: scale(1, 1);
 }
 
 .mobileOnly {

@@ -44,7 +44,6 @@ export default function MobileNavButton() {
             {menuOpen ? (
               <>
                 <IoCloseOutline size={40} color='rgb(85, 84, 84)' />
-                <div>a</div>
               </>
             ) : (
               <IoIosMenu size={40} color='rgb(85, 84, 84)' />
@@ -53,6 +52,23 @@ export default function MobileNavButton() {
         </div>
       </div>
       {menuOpen && <div className={styles.overlay} onClick={toggleMenu} />}
+      <nav className={`${styles.sideMenu} ${menuOpen ? styles.open : ""}`}>
+        <ul className={styles.menuList}>
+          {menuItems.map((item) => (
+            <li key={item.href} className={styles.menuItem}>
+              <Link
+                href={item.href}
+                className={`${styles.menuLink} ${
+                  pathname === item.href ? styles.active : ""
+                }`}
+                onClick={handleLinkClick}
+              >
+                <span className={styles.menuText}>{item.name}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </>
   );
 }
