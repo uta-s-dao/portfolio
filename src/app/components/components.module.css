@@ -7,6 +7,15 @@
   background-color: whitesmoke;
 }
 
+.mobiletitle {
+  font-size: 6vh;
+  font-weight: bold;
+  padding-left: 3vw;
+  padding-top: 1vh;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+}
+
 .navigation {
   color: rgb(85, 84, 84);
   background-color: whitesmoke;
@@ -29,4 +38,222 @@
   height: 4vh;
   color: rgb(85, 84, 84);
   background-color: whitesmoke;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 10vh;
+  position: relative;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+}
+
+.myname {
+  font-size: 5vh;
+  padding-left: 3vw;
+  padding-top: 5vh;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+}
+
+.mobileMyname {
+  font-size: 4vh;
+  padding-left: 2vw;
+  padding-top: 5vh;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+}
+
+.mobileIcon {
+  width: 100vw;
+  display: flex;
+  padding-left: 3vw;
+  padding-top: 5vh;
+  justify-content: center;
+  gap: 3rem;
+  background-color: whitesmoke;
+}
+
+.detail {
+  font-size: 3vh;
+  padding-left: 3vw;
+  padding-top: 2vh;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+}
+
+.icon {
+  width: 100vw;
+  display: flex;
+  padding-left: 3vw;
+  padding-top: 12vh;
+  justify-content: center;
+  gap: 5rem;
+  background-color: whitesmoke;
+}
+
+.icona {
+  margin-right: 3vw;
+  background-color: whitesmoke;
+  transition: all 0.3s ease;
+}
+
+.icona:hover {
+  transform: translateY(-5px) scale(1.2);
+}
+
+.mobileOnly {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: whitesmoke;
+}
+
+.span {
+  color: rgb(85, 84, 84);
+}
+
+.mobileDetail {
+  font-size: 2vh;
+  padding-left: 2vw;
+  padding-top: 2vh;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+  display: flex;
+  gap: 1rem;
+}
+
+.desktopOnly {
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+}
+
+.mobileNav {
+  display: block;
+  width: 100vw;
+  background-color: whitesmoke;
+}
+
+.mobilenavlocation {
+  display: flex;
+  padding-right: 3vw;
+}
+
+.menubutton {
+  margin-left: auto;
+  padding-right: 4vw;
+  padding-top: 1vh;
+  border: none;
+  background-color: whitesmoke;
+  z-index: 1000;
+}
+
+.desktopNav {
+  display: none;
+  width: 100vw;
+  background-color: whitesmoke;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(245, 245, 245, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 998;
+  animation: fadeIn 0.3s ease;
+}
+
+.sideMenu {
+  position: fixed;
+  top: 0;
+  right: -150px;
+  width: 150px;
+  height: 100vh;
+  background: whitesmoke;
+  transition: right 0.3s ease;
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.sideMenu.open {
+  right: 0;
+}
+
+.menuList {
+  list-style: none;
+  padding: 2rem 0;
+  margin-top: 3vh;
+}
+
+.menuItem {
+  margin: 0;
+}
+
+.menuLink {
+  position: relative;
+  display: block;
+  padding: 8px 16px;
+  color: #333;
+  text-decoration: none;
+}
+
+.menuText {
+  position: relative;
+  display: inline-block;
+}
+
+.menuText::after {
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: rgb(85, 84, 84);
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.3s;
+}
+
+.active .menuText::after {
+  transform: scale(1, 1);
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobileOnly {
+    display: none;
+  }
+  .desktopOnly {
+    display: block;
+  }
+  .mobileNav {
+    display: none;
+  }
+  .desktopNav {
+    display: block;
+  }
 }

@@ -3,15 +3,15 @@ import Button from "./Button";
 
 export default function MobileComponent() {
   return (
-    <>
+    <div className={styles.mobileOnly}>
       <div className={styles.topContainer}>
         <div style={{ fontSize: "6vh" }}>Yuta Saruwatari</div>
         <div style={{ fontSize: "3vh" }}>Software Engineer</div>
         <div className={styles.button}>
-          <Button href='desktop/works'>Works</Button>
-          <Button href='desktop/about'>About</Button>
+          <Button href='works'>Works</Button>
+          <Button href='about'>About</Button>
         </div>
       </div>
-    </>
+    </div>
   );
 }

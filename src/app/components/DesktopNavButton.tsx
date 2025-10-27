@@ -5,7 +5,7 @@ import Button from "./Button";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function NavButton() {
+export default function DesktopNavButton() {
   const pathname = usePathname();
   const [currentPath, setCurrentPath] = useState("");
 
@@ -20,17 +20,22 @@ export default function NavButton() {
 
   return (
     <>
-      <div className={styles.title}>{currentPath}</div>
-      <div className={styles.navigation}>
-        <Button href='/' active={currentPath === 'Home' || currentPath === ''}>
-          Home
-        </Button>
-        <Button href='http://localhost:3000/desktop/works' active={currentPath === 'Works'}>
-          Works
-        </Button>
-        <Button href='http://localhost:3000/desktop/about' active={currentPath === 'About'}>
-          About
-        </Button>
+      <div className={styles.desktopNav}>
+        <div className={styles.title}>{currentPath}</div>
+        <div className={styles.navigation}>
+          <Button
+            href='/'
+            active={currentPath === "Home" || currentPath === ""}
+          >
+            Home
+          </Button>
+          <Button href='works' active={currentPath === "Works"}>
+            Works
+          </Button>
+          <Button href='about' active={currentPath === "About"}>
+            About
+          </Button>
+        </div>
       </div>
     </>
   );
