@@ -57,6 +57,24 @@
   background-color: whitesmoke;
 }
 
+.mobileMyname {
+  font-size: 4vh;
+  padding-left: 2vw;
+  padding-top: 5vh;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+}
+
+.mobileIcon {
+  width: 100vw;
+  display: flex;
+  padding-left: 3vw;
+  padding-top: 5vh;
+  justify-content: center;
+  gap: 3rem;
+  background-color: whitesmoke;
+}
+
 .detail {
   font-size: 3vh;
   padding-left: 3vw;
@@ -92,6 +110,20 @@
   width: 100vw;
   height: 100vh;
   background-color: whitesmoke;
+}
+
+.span {
+  color: rgb(85, 84, 84);
+}
+
+.mobileDetail {
+  font-size: 2vh;
+  padding-left: 2vw;
+  padding-top: 2vh;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
+  display: flex;
+  gap: 1rem;
 }
 
 .desktopOnly {
@@ -138,9 +170,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(245, 245, 245, 0.7); /* whitesmokeの半透明 */
-  backdrop-filter: blur(5px); /* 背景をぼかす */
-  -webkit-backdrop-filter: blur(5px); /* Safari対応 */
+  background: rgba(245, 245, 245, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   z-index: 998;
   animation: fadeIn 0.3s ease;
 }
@@ -148,7 +180,7 @@
 .sideMenu {
   position: fixed;
   top: 0;
-  right: -150px; /* 右から出る場合 */
+  right: -150px;
   width: 150px;
   height: 100vh;
   background: whitesmoke;
@@ -197,7 +229,7 @@
   transition: transform 0.3s;
 }
 
-.active  .menuText::after {
+.active .menuText::after {
   transform: scale(1, 1);
 }
 
