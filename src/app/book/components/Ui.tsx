@@ -1,37 +1,54 @@
-"use client";
-
 import { atom, useAtom } from "jotai";
-import { useEffect } from "react";
-import Link from "next/link";
-import BookCover from "./AllWork/BookCover";
-import BookBack from "./AllWork/BookBack";
-import Openlive from "./AllWork/Openlive";
-import Project1 from "./AllWork/Project1";
-import Project2 from "./AllWork/Project2";
-import Project3 from "./AllWork/Project3";
+import { useEffect, useRef } from "react";
+
+const pictures = [
+  "openlive",
+  "openlive_detail",
+  "bitcoin",
+  "bitcoin_detail",
+  // "DSC01071",
+  // "DSC01103",
+  // "DSC01145",
+  // "DSC01420",
+  // "DSC01461",
+  // "DSC01489",
+  // "DSC02031",
+  // "DSC02064",
+  // "DSC02069",
+];
 
 export const pageAtom = atom(0);
 export const pages = [
   {
-    front: BookCover,
-    back: Openlive,
-  },
-  {
-    front: Project1,
-    back: Project2,
-  },
-  {
-    front: Project3,
-    back: BookBack,
+    front: "book-cover",
+    back: pictures[0],
   },
 ];
+for (let i = 1; i < pictures.length - 1; i += 2) {
+  pages.push({
+    front: pictures[i % pictures.length],
+    back: pictures[(i + 1) % pictures.length],
+  });
+}
+
+pages.push({
+  front: pictures[pictures.length - 1],
+  back: "book-back",
+});
 
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     const audio = new Audio("/audios/page-flip-01a.mp3");
-    audio.play();
+    audio.play().catch((error) => {
+      console.log("Audio playback failed:", error);
+    });
   }, [page]);
 
   return (
@@ -65,12 +82,6 @@ export const UI = () => {
           </div>
         </div>
       </main>
-
-      <div className='fixed inset-0 flex items-center -rotate-2 select-none hidden'>
-        <div className='relative'>
-          <div className='bg-white/0  animate-horizontal-scroll flex items-center gap-8 w-max px-8'></div>
-        </div>
-      </div>
     </>
   );
 };

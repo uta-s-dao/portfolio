@@ -1,29 +1,27 @@
-"use client";
-
 import { useEffect, useMemo, useRef, useState } from "react";
 import { pageAtom, pages } from "./Ui";
-import * as THREE from "three";
 import {
   Bone,
   BoxGeometry,
   Color,
-  DoubleSide,
   Float32BufferAttribute,
+  Group,
   MathUtils,
   MeshStandardMaterial,
+  SRGBColorSpace,
   Skeleton,
   SkinnedMesh,
   Uint16BufferAttribute,
   Vector3,
 } from "three";
-import { useCursor, Html } from "@react-three/drei";
+import { useCursor, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { degToRad } from "three/src/math/MathUtils.js";
 import { useAtom } from "jotai";
 import { easing } from "maath";
 
-const PAGE_WIDTH = 1.28;
-const PAGE_HEIGHT = 1.71; // 4:3 aspect ratio
+const PAGE_WIDTH = 1.4;
+const PAGE_HEIGHT = 1.86; // 4:3 aspect ratio
 const PAGE_DEPTH = 0.003;
 const PAGE_SEGMENTS = 30;
 const SEGMENT_WIDTH = PAGE_WIDTH / PAGE_SEGMENTS;
@@ -75,44 +73,53 @@ pageGeometry.setAttribute(
   new Float32BufferAttribute(skinWeights, 4)
 );
 
-const brownColor = new Color("#8B7355"); // 茶色
-const darkBrownColor = new Color("#5C4033"); // 濃い茶色（エッジ用）
+const whiteColor = new Color("white");
 const emissiveColor = new Color("orange");
 
 const pageMaterials = [
   new MeshStandardMaterial({
-    color: brownColor,
-    side: DoubleSide,
+    color: whiteColor,
   }),
   new MeshStandardMaterial({
-    color: darkBrownColor,
-    side: DoubleSide,
+    color: "#111",
   }),
   new MeshStandardMaterial({
-    color: brownColor,
-    side: DoubleSide,
+    color: whiteColor,
   }),
   new MeshStandardMaterial({
-    color: brownColor,
-    side: DoubleSide,
+    color: whiteColor,
   }),
 ];
 
+pages.forEach((page) => {
+  useTexture.preload(`/textures/${page.front}.png`);
+  useTexture.preload(`/textures/${page.back}.png`);
+  useTexture.preload(`/textures/book-cover-roughness.png`);
+});
+
 interface PageProps {
   number: number;
-  front: React.ComponentType;
-  back: React.ComponentType;
+  front: string;
+  back: string;
   page: number;
   opened: boolean;
   bookClosed: boolean;
 }
 
-const Page = ({ number, front: FrontComponent, back: BackComponent, page, opened, bookClosed }: PageProps) => {
-  const group = useRef<THREE.Group>(null);
+const Page = ({ number, front, back, page, opened, bookClosed }: PageProps) => {
+  const [picture, picture2, pictureRoughness] = useTexture([
+    `/textures/${front}.png`,
+    `/textures/${back}.png`,
+    ...(number === 0 || number === pages.length - 1
+      ? [`textures/book-cover-roughness.png`]
+      : []),
+  ]);
+  picture.colorSpace = picture2.colorSpace = SRGBColorSpace;
+  const group = useRef<Group>(null!);
   const turnedAt = useRef(0);
   const lastOpened = useRef(opened);
 
-  const skinnedMeshRef = useRef<SkinnedMesh>(null);
+  const skinnedMeshRef = useRef<SkinnedMesh | null>(null);
 
   const manualSkinnedMesh = useMemo(() => {
     const bones = [];
@@ -133,18 +140,30 @@ const Page = ({ number, front: FrontComponent, back: BackComponent, page, opened
     const materials = [
       ...pageMaterials,
       new MeshStandardMaterial({
-        color: brownColor,
-        roughness: 0.4,
+        color: whiteColor,
+        map: picture,
+        ...(number === 0
+          ? {
+              roughnessMap: pictureRoughness,
+            }
+          : {
+              roughness: 0.1,
+            }),
         emissive: emissiveColor,
         emissiveIntensity: 0,
-        side: DoubleSide,
       }),
       new MeshStandardMaterial({
-        color: brownColor,
-        roughness: 0.4,
+        color: whiteColor,
+        map: picture2,
+        ...(number === pages.length - 1
+          ? {
+              roughnessMap: pictureRoughness,
+            }
+          : {
+              roughness: 0.1,
+            }),
         emissive: emissiveColor,
         emissiveIntensity: 0,
-        side: DoubleSide,
       }),
     ];
     const mesh = new SkinnedMesh(pageGeometry, materials);
@@ -154,7 +173,7 @@ const Page = ({ number, front: FrontComponent, back: BackComponent, page, opened
     mesh.add(skeleton.bones[0]); // adding root bone to our mesh
     mesh.bind(skeleton);
     return mesh;
-  }, []);
+  }, [number, picture, picture2, pictureRoughness]);
 
   // useHelper(skinnedMeshRef, SkeletonHelper, "red") // displays bones
 
@@ -165,18 +184,14 @@ const Page = ({ number, front: FrontComponent, back: BackComponent, page, opened
 
     const emissiveIntensity = highlighted ? 0.22 : 0;
     const materials = skinnedMeshRef.current.material as MeshStandardMaterial[];
-    materials[4].emissiveIntensity =
-      materials[5].emissiveIntensity = MathUtils.lerp(
-        materials[4].emissiveIntensity,
-        emissiveIntensity,
-        0.1
-      );
+    materials[4].emissiveIntensity = materials[5].emissiveIntensity =
+      MathUtils.lerp(materials[4].emissiveIntensity, emissiveIntensity, 0.1);
 
     if (lastOpened.current !== opened) {
       turnedAt.current = +new Date();
       lastOpened.current = opened;
     }
-    let turningTime = Math.min(400, new Date().getTime() - turnedAt.current) / 400;
+    let turningTime = Math.min(400, +new Date() - turnedAt.current) / 400;
     turningTime = Math.sin(turningTime * Math.PI);
 
     let targetRotation = opened ? -Math.PI / 2 : Math.PI / 2;
@@ -186,8 +201,6 @@ const Page = ({ number, front: FrontComponent, back: BackComponent, page, opened
     const bones = skinnedMeshRef.current.skeleton.bones;
     for (let i = 0; i < bones.length; i++) {
       const target = i === 0 ? group.current : bones[i];
-
-      if (!target) continue;
 
       const insideCurveIntensity = i < 8 ? Math.sin(i * 0.2 + 0.25) : 0;
       const outsideCurveIntensity = i >= 8 ? Math.cos(i * 0.3 + 0.09) : 0;
@@ -240,7 +253,6 @@ const Page = ({ number, front: FrontComponent, back: BackComponent, page, opened
   return (
     <group
       ref={group}
-      position-x={0}
       onPointerEnter={(e) => {
         e.stopPropagation();
         setHighlighted(true);
@@ -260,55 +272,6 @@ const Page = ({ number, front: FrontComponent, back: BackComponent, page, opened
         ref={skinnedMeshRef}
         position-z={-number * PAGE_DEPTH + page * PAGE_DEPTH}
       />
-
-      {/* Front page content */}
-      <Html
-        key={`front-${number}`}
-        position={[PAGE_WIDTH / 2, 0, 0.002]}
-        transform
-        distanceFactor={1.5}
-        style={{
-          width: `${PAGE_WIDTH * 400}px`,
-          height: `${PAGE_HEIGHT * 400}px`,
-          pointerEvents: 'none',
-          userSelect: 'none',
-          opacity: opened ? 0 : 1,
-          transition: 'opacity 0.3s',
-        }}
-      >
-        <div style={{
-          width: '100%',
-          height: '100%',
-          overflow: 'hidden',
-        }}>
-          <FrontComponent />
-        </div>
-      </Html>
-
-      {/* Back page content - rotated 180 degrees */}
-      <Html
-        key={`back-${number}`}
-        position={[PAGE_WIDTH / 2, 0, -0.002]}
-        rotation-y={Math.PI}
-        transform
-        distanceFactor={1.5}
-        style={{
-          width: `${PAGE_WIDTH * 400}px`,
-          height: `${PAGE_HEIGHT * 400}px`,
-          pointerEvents: 'none',
-          userSelect: 'none',
-          opacity: opened ? 1 : 0,
-          transition: 'opacity 0.3s',
-        }}
-      >
-        <div style={{
-          width: '100%',
-          height: '100%',
-          overflow: 'hidden',
-        }}>
-          <BackComponent />
-        </div>
-      </Html>
     </group>
   );
 };
@@ -346,7 +309,7 @@ export const Book = ({ ...props }) => {
     };
   }, [page]);
   return (
-    <group {...props} rotation-y={Math.PI / 2}>
+    <group {...props} rotation-y={-Math.PI / 2}>
       {[...pages].map((pageData, index) => (
         <Page
           key={index}
