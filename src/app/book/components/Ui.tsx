@@ -121,7 +121,7 @@ export const UI = () => {
 
     const projectId = projectIdMap[currentTitle];
     if (projectId) {
-      router.push(`/projects/${projectId}`);
+      router.push(`/works/${projectId}`);
     }
   };
 

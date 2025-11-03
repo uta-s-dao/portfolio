@@ -24,7 +24,7 @@ export default function ProjectDetailPage({
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Link href='/book' className={styles.backButton}>
+        <Link href='/works' className={styles.backButton}>
           ← 戻る
         </Link>
         <h1 className={styles.title}>{project.name}</h1>
