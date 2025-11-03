@@ -2,7 +2,7 @@ import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
 import styles from "./ui.module.css";
 
-const pictures = ["openlive", "openlive_detail", "bitcoin", "bitcoin_detail"];
+const pictures = ["openlive", "openlive_detail", "bitcoin", "bitcoin_detail", "DSC00933"];
 
 export const pageAtom = atom(0);
 export const pages = [

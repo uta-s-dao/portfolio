@@ -28,8 +28,8 @@ const SEGMENT_WIDTH = PAGE_WIDTH / PAGE_SEGMENTS;
 
 const easingFactor = 0.5; // controls the speed of the easing
 const easingFactorFold = 0.3; // controls the speed of the easing
-const insideCurveStrength = 0.18; // Controls the strength of the curve
-const outsideCurveStrength = 0.05; // Controls the strength of the curve
+const insideCurveStrength = 0.16; // Controls the strength of the curve
+const outsideCurveStrength = 0.01; // Controls the strength of the curve
 const turningCurveStrength = 0.09; // Controls the strength of the curve
 
 const pageGeometry = new BoxGeometry(
@@ -74,7 +74,6 @@ pageGeometry.setAttribute(
 );
 
 const whiteColor = new Color("white");
-const emissiveColor = new Color("orange");
 
 const pageMaterials = [
   new MeshStandardMaterial({
@@ -140,30 +139,24 @@ const Page = ({ number, front, back, page, opened, bookClosed }: PageProps) => {
     const materials = [
       ...pageMaterials,
       new MeshStandardMaterial({
-        color: whiteColor,
         map: picture,
         ...(number === 0
           ? {
               roughnessMap: pictureRoughness,
             }
           : {
-              roughness: 0.1,
+              roughness: 0.4,
             }),
-        emissive: emissiveColor,
-        emissiveIntensity: 0,
       }),
       new MeshStandardMaterial({
-        color: whiteColor,
         map: picture2,
         ...(number === pages.length - 1
           ? {
               roughnessMap: pictureRoughness,
             }
           : {
-              roughness: 0.1,
+              roughness: 0.4,
             }),
-        emissive: emissiveColor,
-        emissiveIntensity: 0,
       }),
     ];
     const mesh = new SkinnedMesh(pageGeometry, materials);
@@ -181,11 +174,6 @@ const Page = ({ number, front, back, page, opened, bookClosed }: PageProps) => {
     if (!skinnedMeshRef.current) {
       return;
     }
-
-    const emissiveIntensity = highlighted ? 0.22 : 0;
-    const materials = skinnedMeshRef.current.material as MeshStandardMaterial[];
-    materials[4].emissiveIntensity = materials[5].emissiveIntensity =
-      MathUtils.lerp(materials[4].emissiveIntensity, emissiveIntensity, 0.1);
 
     if (lastOpened.current !== opened) {
       turnedAt.current = +new Date();
