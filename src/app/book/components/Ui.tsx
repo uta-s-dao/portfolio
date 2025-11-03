@@ -119,10 +119,10 @@ export const UI = () => {
           </button>
           <div className={styles.pageIndicator}>
             <span key={page} className={styles.pageNumber}>
-              {page + 1}
+              {Math.min(page, Math.floor(pictures.length / 2))}
             </span>
             <span>/</span>
-            <span>{pictures.length}</span>
+            <span>{Math.floor(pictures.length / 2)}</span>
           </div>
           <button
             className={styles.navButton}

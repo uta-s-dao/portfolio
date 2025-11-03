@@ -93,7 +93,6 @@ const pageMaterials = [
 pages.forEach((page) => {
   useTexture.preload(`/textures/${page.front}.png`);
   useTexture.preload(`/textures/${page.back}.png`);
-  useTexture.preload(`/textures/book-cover-roughness.png`);
 });
 
 interface PageProps {
@@ -109,9 +108,6 @@ const Page = ({ number, front, back, page, opened, bookClosed }: PageProps) => {
   const [picture, picture2, pictureRoughness] = useTexture([
     `/textures/${front}.png`,
     `/textures/${back}.png`,
-    ...(number === 0 || number === pages.length - 1
-      ? [`textures/book-cover-roughness.png`]
-      : []),
   ]);
   picture.colorSpace = picture2.colorSpace = SRGBColorSpace;
   const group = useRef<Group>(null!);
