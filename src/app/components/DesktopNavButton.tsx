@@ -11,9 +11,10 @@ export default function DesktopNavButton() {
 
   useEffect(() => {
     if (pathname) {
-      const lastSlashIndex = pathname.lastIndexOf("/");
-      const tmp = pathname.slice(lastSlashIndex + 1);
-      const capitalized = tmp.charAt(0).toUpperCase() + tmp.slice(1);
+      // Get the first segment after the leading slash
+      const segments = pathname.split("/").filter(segment => segment !== "");
+      const firstSegment = segments[0] || "";
+      const capitalized = firstSegment.charAt(0).toUpperCase() + firstSegment.slice(1);
       setCurrentPath(capitalized);
     }
   }, [pathname]);
@@ -29,10 +30,10 @@ export default function DesktopNavButton() {
           >
             Home
           </Button>
-          <Button href='works' active={currentPath === "Works"}>
+          <Button href='/works' active={currentPath === "Works"}>
             Works
           </Button>
-          <Button href='about' active={currentPath === "About"}>
+          <Button href='/about' active={currentPath === "About"}>
             About
           </Button>
         </div>

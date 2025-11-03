@@ -3,6 +3,7 @@ import { getProjectById, projects } from "../projectData";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
+import { BsGithub } from "react-icons/bs";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -24,7 +25,7 @@ export default function ProjectDetailPage({
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Link href='/book' className={styles.backButton}>
+        <Link href='/works' className={styles.backButton}>
           ← 戻る
         </Link>
         <h1 className={styles.title}>{project.name}</h1>
@@ -70,7 +71,7 @@ export default function ProjectDetailPage({
                     rel='noopener noreferrer'
                     className={styles.link}
                   >
-                    GitHub
+                    <BsGithub size={30} color='rgb(0,100,0)' />
                   </a>
                 )}
                 {project.links.demo && (
