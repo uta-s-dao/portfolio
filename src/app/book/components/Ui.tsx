@@ -1,21 +1,8 @@
 import { atom, useAtom } from "jotai";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import styles from "./ui.module.css";
 
-const pictures = [
-  "openlive",
-  "openlive_detail",
-  "bitcoin",
-  "bitcoin_detail",
-  // "DSC01071",
-  // "DSC01103",
-  // "DSC01145",
-  // "DSC01420",
-  // "DSC01461",
-  // "DSC01489",
-  // "DSC02031",
-  // "DSC02064",
-  // "DSC02069",
-];
+const pictures = ["openlive", "openlive_detail", "bitcoin", "bitcoin_detail"];
 
 export const pageAtom = atom(0);
 export const pages = [
@@ -24,6 +11,7 @@ export const pages = [
     back: pictures[0],
   },
 ];
+
 for (let i = 1; i < pictures.length - 1; i += 2) {
   pages.push({
     front: pictures[i % pictures.length],
@@ -38,50 +26,114 @@ pages.push({
 
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const isFirstRender = useRef(true);
+
+  // スワイプ用の状態
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
+
+    // ページ遷移アニメーション
+    setIsTransitioning(true);
+    setTimeout(() => setIsTransitioning(false), 600);
+
+    // 音声再生
     const audio = new Audio("/audios/page-flip-01a.mp3");
     audio.play().catch((error) => {
       console.log("Audio playback failed:", error);
     });
   }, [page]);
 
+  // キーボード操作
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        // 左矢印キー：前のページ
+        setPage((prev) => Math.max(0, prev - 1));
+      } else if (e.key === "ArrowRight") {
+        // 右矢印キー：次のページ
+        setPage((prev) => Math.min(pages.length, prev + 1));
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [setPage]);
+
+  // スワイプ操作
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50; // 最小スワイプ距離
+
+    if (Math.abs(swipeDistance) > minSwipeDistance) {
+      if (swipeDistance > 0) {
+        // 左スワイプ：次のページ
+        setPage((prev) => Math.min(pages.length, prev + 1));
+      } else {
+        // 右スワイプ：前のページ
+        setPage((prev) => Math.max(0, prev - 1));
+      }
+    }
+
+    touchStartX.current = 0;
+    touchEndX.current = 0;
+  };
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
+
+  const getCurrentPageTitle = () => {
+    if (page === 0) return "Cover";
+    if (page === pages.length) return "Back Cover";
+    return pictures[2 * (page - 1)];
+  };
+
   return (
-    <>
-      <main className=' pointer-events-none select-none z-10 fixed  inset-0  flex justify-between flex-col'>
-        <div className='w-full overflow-auto pointer-events-auto flex justify-center'>
-          <div className='overflow-auto flex items-center gap-4 max-w-full p-10'>
-            {[...pages].map((_, index) => (
-              <button
-                key={index}
-                className={`border-transparent hover:border-white transition-all duration-300  px-4 py-3 rounded-full  text-lg uppercase shrink-0 border ${
-                  index === page
-                    ? "bg-white/90 text-black"
-                    : "bg-black/30 text-white"
-                }`}
-                onClick={() => setPage(index)}
-              >
-                {index === 0 ? "Cover" : `Page ${index}`}
-              </button>
-            ))}
-            <button
-              className={`border-transparent hover:border-white transition-all duration-300  px-4 py-3 rounded-full  text-lg uppercase shrink-0 border ${
-                page === pages.length
-                  ? "bg-white/90 text-black"
-                  : "bg-black/30 text-white"
-              }`}
-              onClick={() => setPage(pages.length)}
-            >
-              Back Cover
-            </button>
+    <main
+      className={styles.uiContainer}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <nav className={styles.navigation}>
+        <div className={styles.fusen}>{getCurrentPageTitle()}</div>
+        <div className={styles.pageControls}>
+          <button
+            className={styles.navButton}
+            onClick={() => setPage((p) => Math.max(p - 1, 0))}
+          >
+            ←
+          </button>
+          <div className={styles.pageIndicator}>
+            <span key={page} className={styles.pageNumber}>
+              {page + 1}
+            </span>
+            <span>/</span>
+            <span>{pictures.length}</span>
           </div>
+          <button
+            className={styles.navButton}
+            onClick={() => setPage((p) => Math.min(p + 1, pictures.length - 1))}
+          >
+            →
+          </button>
         </div>
-      </main>
-    </>
+      </nav>
+    </main>
   );
 };
