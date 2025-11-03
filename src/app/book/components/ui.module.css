@@ -1,7 +1,7 @@
 /* メインコンテナ */
 .uiContainer {
   position: fixed;
-  left: 6vw;
+  left: 7vw;
   top: 0;
   height: 100vh;
   display: flex;

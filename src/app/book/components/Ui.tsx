@@ -1,5 +1,5 @@
 import { atom, useAtom } from "jotai";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./ui.module.css";
 
 const pictures = ["openlive", "openlive_detail", "bitcoin", "bitcoin_detail"];
@@ -26,7 +26,6 @@ pages.push({
 
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const isFirstRender = useRef(true);
 
   // スワイプ用の状態
@@ -38,10 +37,6 @@ export const UI = () => {
       isFirstRender.current = false;
       return;
     }
-
-    // ページ遷移アニメーション
-    setIsTransitioning(true);
-    setTimeout(() => setIsTransitioning(false), 600);
 
     // 音声再生
     const audio = new Audio("/audios/page-flip-01a.mp3");
@@ -91,10 +86,6 @@ export const UI = () => {
 
     touchStartX.current = 0;
     touchEndX.current = 0;
-  };
-
-  const handlePageChange = (newPage: number) => {
-    setPage(newPage);
   };
 
   const getCurrentPageTitle = () => {
