@@ -23,12 +23,12 @@ export default function DesktopAboutPage() {
         </div>
         <div></div>
         <div className={styles.detail}>
-          Infrastructure and Deployment : AWS / Cloudflare
+          Infra :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AWS / Cloudflare
         </div>
         <div></div>
         <div className={styles.myname}>Favorite things</div>
         <div className={styles.detail}>
-          guiter/Go to a music festival/playing sports/drinking alcohol
+          Guiter/Go to a music festival/Playing sports
         </div>
         <div className={styles.icon}>
           <Link href='https://github.com/uta-s-dao' className={styles.icona}>
