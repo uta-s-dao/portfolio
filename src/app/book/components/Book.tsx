@@ -6,7 +6,6 @@ import {
   Color,
   Float32BufferAttribute,
   Group,
-  MathUtils,
   MeshStandardMaterial,
   SRGBColorSpace,
   Skeleton,

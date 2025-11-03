@@ -23,6 +23,7 @@
 }
 
 .fusen {
+  border: none;
   font-size: 3vh;
   display: inline-block;
   position: relative;

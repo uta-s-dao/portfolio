@@ -1,5 +1,6 @@
 import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./ui.module.css";
 
 const pictures = [
@@ -10,6 +11,16 @@ const pictures = [
   "bitcoin",
   "bitcoin_detail",
 ];
+
+// プロジェクトIDのマッピング
+const projectIdMap: { [key: string]: string } = {
+  openlive: "openlive",
+  openlive_detail: "openlive",
+  haral: "haral",
+  haral_detail: "haral",
+  bitcoin: "bitcoin",
+  bitcoin_detail: "bitcoin",
+};
 
 export const pageAtom = atom(0);
 export const pages = [
@@ -34,6 +45,7 @@ pages.push({
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
   const isFirstRender = useRef(true);
+  const router = useRouter();
 
   // スワイプ用の状態
   const touchStartX = useRef(0);
@@ -101,6 +113,18 @@ export const UI = () => {
     return pictures[2 * (page - 1)];
   };
 
+  const handleFusenClick = () => {
+    const currentTitle = getCurrentPageTitle();
+    if (currentTitle === "Cover" || currentTitle === "Back Cover") {
+      return; // カバーページでは何もしない
+    }
+
+    const projectId = projectIdMap[currentTitle];
+    if (projectId) {
+      router.push(`/projects/${projectId}`);
+    }
+  };
+
   return (
     <main
       className={styles.uiContainer}
@@ -109,7 +133,9 @@ export const UI = () => {
       onTouchEnd={handleTouchEnd}
     >
       <nav className={styles.navigation}>
-        <div className={styles.fusen}>{getCurrentPageTitle()}</div>
+        <button className={styles.fusen} onClick={handleFusenClick}>
+          {getCurrentPageTitle()}
+        </button>
         <div className={styles.pageControls}>
           <button
             className={styles.navButton}
