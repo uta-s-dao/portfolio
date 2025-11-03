@@ -1,5 +1,5 @@
 import { atom, useAtom } from "jotai";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./ui.module.css";
 
@@ -39,13 +39,14 @@ for (let i = 1; i < pictures.length - 1; i += 2) {
 
 pages.push({
   front: pictures[pictures.length - 1],
-  back: "book-back",
+  back: "book-cover",
 });
 
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
   const isFirstRender = useRef(true);
   const router = useRouter();
+  const [fusenAnimated, setFusenAnimated] = useState(false);
 
   // スワイプ用の状態
   const touchStartX = useRef(0);
@@ -62,6 +63,29 @@ export const UI = () => {
     audio.play().catch((error) => {
       console.log("Audio playback failed:", error);
     });
+  }, [page]);
+
+  // 付箋の3Dアニメーション（3秒後に実行、0.4秒後に元に戻る）
+  useEffect(() => {
+    const currentTitle = getCurrentPageTitle();
+    if (currentTitle === "Cover" || currentTitle === "Back Cover") {
+      setFusenAnimated(false);
+      return;
+    }
+
+    setFusenAnimated(false);
+    const animateTimer = setTimeout(() => {
+      setFusenAnimated(true);
+
+      // 0.4秒後に元に戻す
+      const resetTimer = setTimeout(() => {
+        setFusenAnimated(false);
+      }, 400);
+
+      return () => clearTimeout(resetTimer);
+    }, 3000);
+
+    return () => clearTimeout(animateTimer);
   }, [page]);
 
   // キーボード操作
@@ -133,7 +157,10 @@ export const UI = () => {
       onTouchEnd={handleTouchEnd}
     >
       <nav className={styles.navigation}>
-        <button className={styles.fusen} onClick={handleFusenClick}>
+        <button
+          className={`${styles.fusen} ${fusenAnimated ? styles.fusenAnimated : ''}`}
+          onClick={handleFusenClick}
+        >
           {getCurrentPageTitle()}
         </button>
         <div className={styles.pageControls}>

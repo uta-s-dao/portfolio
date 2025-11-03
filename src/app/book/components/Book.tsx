@@ -107,6 +107,7 @@ const Page = ({ number, front, back, page, opened, bookClosed }: PageProps) => {
   const [picture, picture2, pictureRoughness] = useTexture([
     `/textures/${front}.png`,
     `/textures/${back}.png`,
+    `/textures/book-cover.png`,
   ]);
   picture.colorSpace = picture2.colorSpace = SRGBColorSpace;
   const group = useRef<Group>(null!);
