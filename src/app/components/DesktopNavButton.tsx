@@ -30,10 +30,10 @@ export default function DesktopNavButton() {
           >
             Home
           </Button>
-          <Button href='works' active={currentPath === "Works"}>
+          <Button href='/works' active={currentPath === "Works"}>
             Works
           </Button>
-          <Button href='about' active={currentPath === "About"}>
+          <Button href='/about' active={currentPath === "About"}>
             About
           </Button>
         </div>

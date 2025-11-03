@@ -3,6 +3,7 @@ import { getProjectById, projects } from "../projectData";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
+import { BsGithub } from "react-icons/bs";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -70,7 +71,7 @@ export default function ProjectDetailPage({
                     rel='noopener noreferrer'
                     className={styles.link}
                   >
-                    GitHub
+                    <BsGithub size={30} color='rgb(0,100,0)' />
                   </a>
                 )}
                 {project.links.demo && (
