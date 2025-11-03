@@ -51,6 +51,13 @@
   position: relative;
 }
 
+.fusenAnimated {
+  transform: perspective(200px) rotateY(20deg);
+  box-shadow: 3px 3px 30px rgba(0, 0, 0, 0.2);
+  z-index: 15;
+  position: relative;
+}
+
 /* アニメーション定義 */
 @keyframes slideIn {
   from {
