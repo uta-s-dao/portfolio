@@ -1,6 +1,5 @@
 import DesktopNavButton from "../components/DesktopNavButton";
 import MobileNavButton from "../components/MobileNavButton";
-import styles from "../components/components.module.css";
 
 export default function RootLayout({
   children,

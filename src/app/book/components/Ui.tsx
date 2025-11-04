@@ -2,6 +2,7 @@ import { atom, useAtom } from "jotai";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./ui.module.css";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const pictures = [
   "openlive",
@@ -187,10 +188,10 @@ export const UI = () => {
         </button>
         <div className={styles.pageControls}>
           <button
-            className={styles.navButton}
+            className={styles.navUiButton}
             onClick={() => setPage((p) => Math.max(p - 1, 0))}
           >
-            {"<"}
+            <IoIosArrowBack />
           </button>
           <div className={styles.pageIndicator}>
             <div className={styles.pageNumberContainer}>
@@ -210,12 +211,12 @@ export const UI = () => {
             <span>{Math.floor(pictures.length / 2)}</span>
           </div>
           <button
-            className={styles.navButton}
+            className={styles.navUiButton}
             onClick={() =>
               setPage((p) => Math.min(p + 1, Math.floor(pictures.length / 2)))
             }
           >
-            {">"}
+            <IoIosArrowForward />
           </button>
         </div>
       </nav>

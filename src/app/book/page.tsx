@@ -13,7 +13,7 @@ export default function Book() {
       <Loader />
       <Canvas
         shadows
-        camera={{ position: [-0.5, 1, 4], fov: 45 }}
+        camera={{ position: [0, 1, 4], fov: 45 }}
         style={{
           position: "fixed",
           top: 0,

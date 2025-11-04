@@ -1,7 +1,7 @@
 /* メインコンテナ */
 .uiContainer {
   position: fixed;
-  left: 7vw;
+  left: 10vw;
   top: 0;
   height: 100vh;
   display: flex;
@@ -28,7 +28,7 @@
   display: inline-block;
   position: relative;
   padding: 0.5em 1em;
-  border-right: 27px solid #4fb31a;
+  border-right: 27px solid #368a0a;
   background-color: white;
   color: #333333;
   cursor: pointer;
@@ -44,9 +44,21 @@
   z-index: 15;
 }
 
+.fusen::before {
+  position: relative;
+  right: 1px;
+  bottom: 10px;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 5px 25px #333;
+  transform: rotate(4deg);
+  z-index: 15;
+  content: "";
+}
+
 .fusen:hover {
-  transform: perspective(200px) rotateY(20deg);
-  box-shadow: 3px 3px 30px rgba(0, 0, 0, 0.2);
+  transform: perspective(200px) rotateY(20deg) rotateX(6deg);
+  box-shadow: -5px 5px 30px rgba(0, 0, 0, 0.3);
   z-index: 15;
   position: relative;
 }
@@ -137,14 +149,14 @@
   font-size: 18px;
 }
 
-.navButton {
+.navUiButton {
   background: none;
   border: none;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  padding: 4px 5px;
-  font-size: 24px;
-  transition: all 0.3s ease;
-  pointer-events: auto;
 }
 
 .pageIndicator {
@@ -165,7 +177,7 @@
 
 .pageNumber {
   display: inline-block;
-  animation: pageChange 0.4s ease-out;
+  animation: pageChange 0.8s ease-out;
 }
 
 .pageNumberExit {
@@ -173,7 +185,7 @@
   top: 0;
   left: 0;
   display: inline-block;
-  animation: pageChangeExit 0.4s ease-out forwards;
+  animation: pageChangeExit 0.8s ease-out forwards;
 }
 
 @keyframes pageChange {
