@@ -1,5 +1,5 @@
 import { atom, useAtom } from "jotai";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./ui.module.css";
 
@@ -54,6 +54,12 @@ export const UI = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
+  const getCurrentPageTitle = useCallback(() => {
+    if (page === 0) return "Cover";
+    if (page === pages.length) return "Back Cover";
+    return pictures[2 * (page - 1)];
+  }, [page]);
+
   useEffect(() => {
     // ページが変更されていない場合は何もしない
     if (page === prevPage) {
@@ -99,7 +105,7 @@ export const UI = () => {
     }, 3000);
 
     return () => clearTimeout(animateTimer);
-  }, [page]);
+  }, [page, getCurrentPageTitle]);
 
   // キーボード操作
   useEffect(() => {
@@ -120,7 +126,7 @@ export const UI = () => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [setPage, isAnimating]);
+  }, [setPage, isAnimating, page]);
 
   // スワイプ操作
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -149,12 +155,6 @@ export const UI = () => {
 
     touchStartX.current = 0;
     touchEndX.current = 0;
-  };
-
-  const getCurrentPageTitle = () => {
-    if (page === 0) return "Cover";
-    if (page === pages.length) return "Back Cover";
-    return pictures[2 * (page - 1)];
   };
 
   const handleFusenClick = () => {
