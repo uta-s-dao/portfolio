@@ -23,6 +23,7 @@ const projectIdMap: { [key: string]: string } = {
 };
 
 export const pageAtom = atom(0);
+export const isAnimatingAtom = atom(false);
 export const pages = [
   {
     front: "book-cover",
@@ -44,6 +45,7 @@ pages.push({
 
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
+  const [isAnimating, setIsAnimating] = useAtom(isAnimatingAtom);
   const isFirstRender = useRef(true);
   const router = useRouter();
   const [fusenAnimated, setFusenAnimated] = useState(false);
@@ -59,6 +61,9 @@ export const UI = () => {
       return;
     }
 
+    // アニメーション開始
+    setIsAnimating(true);
+
     // 音声再生
     const audio = new Audio("/audios/page-flip-01a.mp3");
     audio.play().catch((error) => {
@@ -68,10 +73,11 @@ export const UI = () => {
     // アニメーション完了後に前のページを更新
     const timer = setTimeout(() => {
       setPrevPage(page);
+      setIsAnimating(false);
     }, 400);
 
     return () => clearTimeout(timer);
-  }, [page]);
+  }, [page, setIsAnimating]);
 
   // 付箋の3Dアニメーション（3秒後に実行、0.4秒後に元に戻る）
   useEffect(() => {
@@ -99,18 +105,23 @@ export const UI = () => {
   // キーボード操作
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (isAnimating) return; // アニメーション中は無効化
+
       if (e.key === "ArrowLeft") {
         // 左矢印キー：前のページ
         setPage((prev) => Math.max(0, prev - 1));
       } else if (e.key === "ArrowRight") {
         // 右矢印キー：次のページ
-        setPage((prev) => Math.min(pages.length, prev + 1));
+        if (page > Math.floor(pictures.length / 2)) return;
+        setPage((prev) =>
+          Math.min(Math.floor(pictures.length + 2 / 2), prev + 1)
+        );
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [setPage]);
+  }, [setPage, isAnimating]);
 
   // スワイプ操作
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -122,13 +133,15 @@ export const UI = () => {
   };
 
   const handleTouchEnd = () => {
+    if (isAnimating) return; // アニメーション中は無効化
+
     const swipeDistance = touchStartX.current - touchEndX.current;
     const minSwipeDistance = 50; // 最小スワイプ距離
 
     if (Math.abs(swipeDistance) > minSwipeDistance) {
       if (swipeDistance > 0) {
         // 左スワイプ：次のページ
-        setPage((prev) => Math.min(pages.length, prev + 1));
+        setPage((prev) => Math.min(Math.floor(pictures.length / 2), prev + 1));
       } else {
         // 右スワイプ：前のページ
         setPage((prev) => Math.max(0, prev - 1));
@@ -183,12 +196,15 @@ export const UI = () => {
           <div className={styles.pageIndicator}>
             <div className={styles.pageNumberContainer}>
               {prevPage !== page && (
-                <span key={`prev-${prevPage}`} className={styles.pageNumberExit}>
-                  {Math.min(prevPage, Math.floor(pictures.length / 2))}
+                <span
+                  key={`prev-${prevPage}`}
+                  className={styles.pageNumberExit}
+                >
+                  {Math.min(prevPage, Math.floor(pictures.length + 2 / 2))}
                 </span>
               )}
               <span key={`current-${page}`} className={styles.pageNumber}>
-                {Math.min(page, Math.floor(pictures.length / 2))}
+                {Math.min(page, Math.floor(pictures.length + 2 / 2))}
               </span>
             </div>
             <span>/</span>
@@ -196,7 +212,9 @@ export const UI = () => {
           </div>
           <button
             className={styles.navButton}
-            onClick={() => setPage((p) => Math.min(p + 1, pictures.length - 1))}
+            onClick={() =>
+              setPage((p) => Math.min(p + 1, Math.floor(pictures.length / 2)))
+            }
           >
             {">"}
           </button>

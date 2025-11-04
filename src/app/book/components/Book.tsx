@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { pageAtom, pages } from "./Ui";
+import { pageAtom, pages, isAnimatingAtom } from "./Ui";
 import {
   Bone,
   BoxGeometry,
@@ -231,6 +231,7 @@ const Page = ({ number, front, back, page, opened, bookClosed }: PageProps) => {
   });
 
   const [, setPage] = useAtom(pageAtom);
+  const [isAnimating] = useAtom(isAnimatingAtom);
   const [highlighted, setHighlighted] = useState(false);
   useCursor(highlighted);
 
@@ -246,6 +247,7 @@ const Page = ({ number, front, back, page, opened, bookClosed }: PageProps) => {
         setHighlighted(false);
       }}
       onClick={(e) => {
+        if (isAnimating) return; // アニメーション中は無効化
         e.stopPropagation();
         setPage(opened ? number : number + 1);
         setHighlighted(false);
