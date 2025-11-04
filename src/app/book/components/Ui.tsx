@@ -46,7 +46,6 @@ pages.push({
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
   const [isAnimating, setIsAnimating] = useAtom(isAnimatingAtom);
-  const isFirstRender = useRef(true);
   const router = useRouter();
   const [fusenAnimated, setFusenAnimated] = useState(false);
   const [prevPage, setPrevPage] = useState(page);
@@ -56,8 +55,8 @@ export const UI = () => {
   const touchEndX = useRef(0);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
+    // ページが変更されていない場合は何もしない
+    if (page === prevPage) {
       return;
     }
 
@@ -77,7 +76,7 @@ export const UI = () => {
     }, 400);
 
     return () => clearTimeout(timer);
-  }, [page, setIsAnimating]);
+  }, [page, setIsAnimating, prevPage]);
 
   // 付箋の3Dアニメーション（3秒後に実行、0.4秒後に元に戻る）
   useEffect(() => {

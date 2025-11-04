@@ -9,13 +9,9 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <div className={styles.container}>
-        <div>
-          <DesktopNavButton />
-          <MobileNavButton />
-        </div>
-      </div>
-      <div>{children}</div>
+      <DesktopNavButton />
+      <MobileNavButton />
+      <div style={{ position: "relative", zIndex: 50 }}>{children}</div>
     </>
   );
 }

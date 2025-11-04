@@ -25,10 +25,8 @@
   position: relative;
   text-decoration: none;
   color: rgb(85, 84, 84);
-  background-color: whitesmoke;
   padding: 16px 16px;
   border-radius: 4px;
-  transition: background-color 0.3s;
 }
 
 .buttonLink::after {

@@ -4,7 +4,10 @@
   padding-left: 3vw;
   padding-top: 1vh;
   color: rgb(85, 84, 84);
-  background-color: whitesmoke;
+  position: fixed;
+  top: 1vh;
+  left: 3vw;
+  z-index: 9999;
 }
 
 .mobiletitle {
@@ -18,12 +21,11 @@
 
 .navigation {
   color: rgb(85, 84, 84);
-  background-color: whitesmoke;
   font-size: 4vh;
   top: 3vh;
-  bottom: 3vh;
   right: 3vw;
-  position: absolute;
+  position: fixed;
+  z-index: 200;
 }
 
 .activeNav {
@@ -47,6 +49,7 @@
   position: relative;
   color: rgb(85, 84, 84);
   background-color: whitesmoke;
+  z-index: 10;
 }
 
 .myname {
