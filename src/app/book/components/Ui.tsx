@@ -47,6 +47,7 @@ export const UI = () => {
   const isFirstRender = useRef(true);
   const router = useRouter();
   const [fusenAnimated, setFusenAnimated] = useState(false);
+  const [prevPage, setPrevPage] = useState(page);
 
   // スワイプ用の状態
   const touchStartX = useRef(0);
@@ -63,6 +64,13 @@ export const UI = () => {
     audio.play().catch((error) => {
       console.log("Audio playback failed:", error);
     });
+
+    // アニメーション完了後に前のページを更新
+    const timer = setTimeout(() => {
+      setPrevPage(page);
+    }, 400);
+
+    return () => clearTimeout(timer);
   }, [page]);
 
   // 付箋の3Dアニメーション（3秒後に実行、0.4秒後に元に戻る）
@@ -158,7 +166,9 @@ export const UI = () => {
     >
       <nav className={styles.navigation}>
         <button
-          className={`${styles.fusen} ${fusenAnimated ? styles.fusenAnimated : ''}`}
+          className={`${styles.fusen} ${
+            fusenAnimated ? styles.fusenAnimated : ""
+          }`}
           onClick={handleFusenClick}
         >
           {getCurrentPageTitle()}
@@ -168,12 +178,19 @@ export const UI = () => {
             className={styles.navButton}
             onClick={() => setPage((p) => Math.max(p - 1, 0))}
           >
-            ←
+            {"<"}
           </button>
           <div className={styles.pageIndicator}>
-            <span key={page} className={styles.pageNumber}>
-              {Math.min(page, Math.floor(pictures.length / 2))}
-            </span>
+            <div className={styles.pageNumberContainer}>
+              {prevPage !== page && (
+                <span key={`prev-${prevPage}`} className={styles.pageNumberExit}>
+                  {Math.min(prevPage, Math.floor(pictures.length / 2))}
+                </span>
+              )}
+              <span key={`current-${page}`} className={styles.pageNumber}>
+                {Math.min(page, Math.floor(pictures.length / 2))}
+              </span>
+            </div>
             <span>/</span>
             <span>{Math.floor(pictures.length / 2)}</span>
           </div>
@@ -181,7 +198,7 @@ export const UI = () => {
             className={styles.navButton}
             onClick={() => setPage((p) => Math.min(p + 1, pictures.length - 1))}
           >
-            →
+            {">"}
           </button>
         </div>
       </nav>
