@@ -23,6 +23,11 @@
 }
 
 .backButton:hover {
+  transform: scale(1.5);
+  transition: transform 0.3s ease;
+}
+
+.backButton:hover {
   color: rgb(85, 84, 84);
 }
 
