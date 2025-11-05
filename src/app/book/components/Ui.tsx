@@ -61,6 +61,14 @@ export const UI = () => {
     return pictures[2 * (page - 1)];
   }, [page]);
 
+  const formatTitle = (title: string) => {
+    if (title === "Cover" || title === "Back Cover") return title;
+    return title
+      .split("_")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ");
+  };
+
   useEffect(() => {
     // ページが変更されていない場合は何もしない
     if (page === prevPage) {
@@ -184,7 +192,7 @@ export const UI = () => {
           }`}
           onClick={handleFusenClick}
         >
-          {getCurrentPageTitle()}
+          {formatTitle(getCurrentPageTitle())}
         </button>
         <div className={styles.pageControls}>
           <button
