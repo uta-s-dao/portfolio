@@ -54,7 +54,7 @@
 
 .myname {
   font-size: 5vh;
-  padding-left: 3vw;
+  padding-left: 5vw;
   padding-top: 5vh;
   color: rgb(85, 84, 84);
   background-color: whitesmoke;
@@ -80,7 +80,7 @@
 
 .detail {
   font-size: 3vh;
-  padding-left: 3vw;
+  padding-left: 5vw;
   padding-top: 2vh;
   color: rgb(85, 84, 84);
   background-color: whitesmoke;
@@ -178,6 +178,15 @@
   -webkit-backdrop-filter: blur(5px);
   z-index: 998;
   animation: fadeIn 0.3s ease;
+}
+
+.firstMyname {
+  margin-top: 7vh;
+  font-size: 5vh;
+  padding-left: 5vw;
+  padding-top: 5vh;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
 }
 
 .sideMenu {

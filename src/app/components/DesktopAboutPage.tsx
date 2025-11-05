@@ -6,7 +6,7 @@ export default function DesktopAboutPage() {
   return (
     <>
       <div className={styles.desktopOnly}>
-        <div className={styles.myname}>Yuta Saruwatari</div>
+        <div className={styles.firstMyname}>Yuta Saruwatari</div>
         <div className={styles.detail}>
           Hey, My name is Yuta Saruwatari. I specialize in building web
           applications and have a passion for creating seamless user experiences
@@ -17,15 +17,12 @@ export default function DesktopAboutPage() {
           Frontend : HTML / CSS / Tailwindcss / JavaSript / TypeScript / React /
           Next.js
         </div>
-        <div></div>
         <div className={styles.detail}>
           Backend : Go / Python / Node.js / SQL
         </div>
-        <div></div>
         <div className={styles.detail}>
           Infra :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AWS / Cloudflare
         </div>
-        <div></div>
         <div className={styles.myname}>Favorite things</div>
         <div className={styles.detail}>
           Guiter/Go to a music festival/Playing sports
