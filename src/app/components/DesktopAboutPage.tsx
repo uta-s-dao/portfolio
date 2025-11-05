@@ -41,6 +41,14 @@ export default function DesktopAboutPage() {
             <BsFacebook size={70} color='rgb(0,100,0)' />
           </Link>
         </div>
+        <div>a</div>
+        <div>a</div>
+        <div>a</div>
+        <div>a</div>
+        <div>a</div>
+        <div>a</div>
+        <div>a</div>
+        <div>a</div>
       </div>
     </>
   );
