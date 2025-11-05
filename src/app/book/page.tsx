@@ -11,8 +11,19 @@ export default function Book() {
     <>
       <UI />
       <Loader />
-      <Canvas shadows camera={{ position: [-0.5, 1, 4], fov: 45 }}>
-        <group position-y={0.2} position-x={0.8}>
+      <Canvas
+        shadows
+        camera={{ position: [0, 1, 4], fov: 45 }}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          zIndex: 100,
+        }}
+      >
+        <group position-y={-0.1} position-x={0.8}>
           <Suspense fallback={null}>
             <Experience />
           </Suspense>

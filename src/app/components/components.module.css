@@ -4,7 +4,10 @@
   padding-left: 3vw;
   padding-top: 1vh;
   color: rgb(85, 84, 84);
-  background-color: whitesmoke;
+  position: fixed;
+  top: 1vh;
+  left: 3vw;
+  z-index: 9999;
 }
 
 .mobiletitle {
@@ -18,12 +21,11 @@
 
 .navigation {
   color: rgb(85, 84, 84);
-  background-color: whitesmoke;
   font-size: 4vh;
   top: 3vh;
-  bottom: 3vh;
   right: 3vw;
-  position: absolute;
+  position: fixed;
+  z-index: 200;
 }
 
 .activeNav {
@@ -47,11 +49,12 @@
   position: relative;
   color: rgb(85, 84, 84);
   background-color: whitesmoke;
+  z-index: 10;
 }
 
 .myname {
   font-size: 5vh;
-  padding-left: 3vw;
+  padding-left: 5vw;
   padding-top: 5vh;
   color: rgb(85, 84, 84);
   background-color: whitesmoke;
@@ -77,7 +80,7 @@
 
 .detail {
   font-size: 3vh;
-  padding-left: 3vw;
+  padding-left: 5vw;
   padding-top: 2vh;
   color: rgb(85, 84, 84);
   background-color: whitesmoke;
@@ -161,7 +164,6 @@
 .desktopNav {
   display: none;
   width: 100vw;
-  background-color: whitesmoke;
 }
 
 .overlay {
@@ -175,6 +177,15 @@
   -webkit-backdrop-filter: blur(5px);
   z-index: 998;
   animation: fadeIn 0.3s ease;
+}
+
+.firstMyname {
+  margin-top: 7vh;
+  font-size: 5vh;
+  padding-left: 5vw;
+  padding-top: 5vh;
+  color: rgb(85, 84, 84);
+  background-color: whitesmoke;
 }
 
 .sideMenu {

@@ -12,18 +12,46 @@ export default function DesktopNavButton() {
   useEffect(() => {
     if (pathname) {
       // Get the first segment after the leading slash
-      const segments = pathname.split("/").filter(segment => segment !== "");
+      const segments = pathname.split("/").filter((segment) => segment !== "");
       const firstSegment = segments[0] || "";
-      const capitalized = firstSegment.charAt(0).toUpperCase() + firstSegment.slice(1);
+      const capitalized =
+        firstSegment.charAt(0).toUpperCase() + firstSegment.slice(1);
       setCurrentPath(capitalized);
     }
   }, [pathname]);
 
+  const isAboutPage = pathname === "/about" || pathname.startsWith("/works/");
+
   return (
     <>
-      <div className={styles.desktopNav}>
-        <div className={styles.title}>{currentPath}</div>
-        <div className={styles.navigation}>
+      <div
+        className={styles.desktopNav}
+        style={
+          isAboutPage
+            ? {
+                zIndex: 100,
+                backgroundColor: "whitesmoke",
+                top: 0,
+                height: "12vh",
+                position: "fixed",
+              }
+            : {}
+        }
+      >
+        <div
+          className={styles.title}
+          style={
+            isAboutPage ? { zIndex: 100, backgroundColor: "whitesmoke" } : {}
+          }
+        >
+          {currentPath}
+        </div>
+        <div
+          className={styles.navigation}
+          style={
+            isAboutPage ? { zIndex: 100, backgroundColor: "whitesmoke" } : {}
+          }
+        >
           <Button
             href='/'
             active={currentPath === "Home" || currentPath === ""}
