@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { BsGithub } from "react-icons/bs";
+import { IoArrowBack } from "react-icons/io5";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -26,9 +27,9 @@ export default function ProjectDetailPage({
     <div className={styles.container}>
       <div className={styles.header}>
         <Link href='/works' className={styles.backButton}>
-          ← 戻る
+          <IoArrowBack style={{ width: '2vw', height: '2vw' }} color='black' />
         </Link>
-        <h1 className={styles.title}>{project.name}</h1>
+        <h2 className={styles.title}>{project.name}</h2>
       </div>
 
       <div className={styles.content}>

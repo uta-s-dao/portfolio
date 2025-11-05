@@ -1,20 +1,24 @@
 .container {
   min-height: 100vh;
-  padding: 2rem;
+  padding: 2vw;
   background: whitesmoke;
   color: rgb(85, 84, 84);
 }
 
 .header {
-  max-width: 1200px;
-  margin: 0 auto 2rem;
+  width: 100vw;
+  margin-top: 11vh;
+  margin-bottom: 4vh;
+  display: flex;
+  align-items: center;
+  gap: 2vw;
 }
 
 .backButton {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   color: #888;
   text-decoration: none;
-  margin-bottom: 1rem;
   transition: color 0.3s ease;
 }
 
@@ -23,7 +27,8 @@
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 2vw;
+  text-decoration: underline;
   font-weight: bold;
   margin: 0;
   background: rgb(0, 100, 0);

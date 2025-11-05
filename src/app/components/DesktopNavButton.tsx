@@ -20,7 +20,7 @@ export default function DesktopNavButton() {
     }
   }, [pathname]);
 
-  const isAboutPage = pathname === "/about";
+  const isAboutPage = pathname === "/about" || pathname.startsWith("/works/");
 
   return (
     <>
