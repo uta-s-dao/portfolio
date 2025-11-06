@@ -54,10 +54,8 @@
 
 .myname {
   font-size: 5vh;
-  padding-left: 5vw;
   padding-top: 5vh;
   color: rgb(85, 84, 84);
-  background-color: whitesmoke;
 }
 
 .mobileMyname {
@@ -80,10 +78,9 @@
 
 .detail {
   font-size: 3vh;
-  padding-left: 5vw;
+  padding-right: 20vw;
   padding-top: 2vh;
   color: rgb(85, 84, 84);
-  background-color: whitesmoke;
 }
 
 .icon {
@@ -93,12 +90,10 @@
   padding-top: 12vh;
   justify-content: center;
   gap: 5rem;
-  background-color: whitesmoke;
 }
 
 .icona {
   margin-right: 3vw;
-  background-color: whitesmoke;
   transition: all 0.3s ease;
 }
 
@@ -182,10 +177,8 @@
 .firstMyname {
   margin-top: 7vh;
   font-size: 5vh;
-  padding-left: 5vw;
   padding-top: 5vh;
   color: rgb(85, 84, 84);
-  background-color: whitesmoke;
 }
 
 .sideMenu {
