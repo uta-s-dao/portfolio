@@ -12,12 +12,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProjectDetailPage({
+export default async function ProjectDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const project = getProjectById(params.id);
+  const { id } = await params;
+  const project = getProjectById(id);
 
   if (!project) {
     notFound();
@@ -46,7 +47,7 @@ export default function ProjectDetailPage({
 
         <div className={styles.infoSection}>
           <h2>プロジェクト概要</h2>
-          <p className={styles.description}>{project.description}</p>
+          <div className={styles.description}>{project.description}</div>
 
           {project.technologies && project.technologies.length > 0 && (
             <div className={styles.techSection}>
