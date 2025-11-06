@@ -29,7 +29,7 @@ export default function ProjectDetailPage({
         <Link href='/works' className={styles.backButton}>
           <IoArrowBack style={{ width: "2vw", height: "2vw" }} color='black' />
         </Link>
-        <h2 className={styles.title}>{project.name}</h2>
+        <h2 className={styles.fusen}>{project.name}</h2>
       </div>
 
       <div className={styles.content}>

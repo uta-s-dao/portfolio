@@ -31,17 +31,23 @@
   color: rgb(85, 84, 84);
 }
 
-.title {
-  font-size: 2vw;
-  text-decoration: underline;
-  text-decoration-color: rgb(0, 100, 0);
-  text-underline-offset: 0.3em;
-  font-weight: bold;
-  margin: 0;
-  background: rgb(0, 100, 0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.fusen {
+  border: none;
+  font-size: 5vh;
+  font-weight: 400;
+  display: inline-block;
+  position: relative;
+  border-right: 27px solid #4dad19;
+  background-color: #e1fcb4;
+  color: #333333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 1vw;
+  z-index: 15;
 }
 
 .content {

@@ -25,6 +25,8 @@
   border: none;
   font-size: 5vh;
   display: inline-block;
+  font-weight: 600;
+  padding: 1vw;
   position: relative;
   border-right: 27px solid #4dad19;
   background-color: #e1fcb4;
@@ -33,11 +35,7 @@
   transition: all 0.3s ease;
   transform-origin: right center;
   transform-style: preserve-3d;
-  min-width: 200px;
-  width: 200px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   box-sizing: border-box;
   z-index: 15;
 }

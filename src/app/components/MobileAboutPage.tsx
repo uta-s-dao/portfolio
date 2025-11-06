@@ -15,7 +15,7 @@ export default function MobileAboutPage() {
         <div className={styles.mobileDetail}>
           Frontend:
           <span className={styles.span}>
-            HTML / CSS / Tailwindcss / JavaSript / TypeScript / React / Next.js
+            HTML / CSS / Tailwindcss / JavaSript / TypeScript / React / Next.js / Affinity by Canva
           </span>
         </div>
         <div className={styles.mobileDetail}>
