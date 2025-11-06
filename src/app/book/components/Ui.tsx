@@ -41,7 +41,7 @@ for (let i = 1; i < pictures.length - 1; i += 2) {
 
 pages.push({
   front: pictures[pictures.length - 1],
-  back: "book-cover",
+  back: "book-back-cover",
 });
 
 export const UI = () => {
@@ -60,6 +60,14 @@ export const UI = () => {
     if (page === pages.length) return "Back Cover";
     return pictures[2 * (page - 1)];
   }, [page]);
+
+  const formatTitle = (title: string) => {
+    if (title === "Cover" || title === "Back Cover") return title;
+    return title
+      .split("_")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ");
+  };
 
   useEffect(() => {
     // ページが変更されていない場合は何もしない
@@ -184,7 +192,7 @@ export const UI = () => {
           }`}
           onClick={handleFusenClick}
         >
-          {getCurrentPageTitle()}
+          {formatTitle(getCurrentPageTitle())}
         </button>
         <div className={styles.pageControls}>
           <button

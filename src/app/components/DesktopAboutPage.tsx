@@ -15,7 +15,7 @@ export default function DesktopAboutPage() {
         <div className={styles.myname}>Skills</div>
         <div className={styles.detail}>
           Frontend : HTML / CSS / Tailwindcss / JavaSript / TypeScript / React /
-          Next.js
+          Next.js / Affinity by Canva
         </div>
         <div className={styles.detail}>
           Backend : Go / Python / Node.js / SQL

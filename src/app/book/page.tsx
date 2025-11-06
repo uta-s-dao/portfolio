@@ -13,7 +13,7 @@ export default function Book() {
       <Loader />
       <Canvas
         shadows
-        camera={{ position: [0, 1, 4], fov: 45 }}
+        camera={{ position: [0, 1, 4], fov: 42 }}
         style={{
           position: "fixed",
           top: 0,
@@ -23,7 +23,7 @@ export default function Book() {
           zIndex: 100,
         }}
       >
-        <group position-y={-0.1} position-x={0.8}>
+        <group position-y={-0.1} position-x={0.2}>
           <Suspense fallback={null}>
             <Experience />
           </Suspense>
