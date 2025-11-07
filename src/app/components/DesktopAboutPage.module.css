@@ -2,9 +2,10 @@
   /* CSS変数 */
   --torn-shadow-offset-x: -2px;
   --torn-shadow-offset-y: 2px;
-  --torn-shadow-blur: 4px;
+  --torn-shadow-blur: 1px;
   --torn-shadow-background-color: rgba(0, 0, 0, 0.25);
-  --torn-background-color: #f5e7c99c;
+  /* --torn-background-color: #f5e7c99c; */
+  --torn-background-color: #f3e7ce9c;
   --torn-left-width: 19px;
   --torn-right-width: 19px;
   --torn-left-clip-path: polygon(
@@ -159,9 +160,6 @@
   bottom: 0px;
   -webkit-clip-path: var(--torn-right-clip-path);
   clip-path: var(--torn-right-clip-path);
-}
-.torn_right > div:nth-child(2):after {
-  left: calc(100% - 0.5px);
 }
 
 /* コンテンツの幅を制限 */

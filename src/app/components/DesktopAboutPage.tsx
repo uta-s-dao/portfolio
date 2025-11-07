@@ -2,7 +2,6 @@ import styles from "./components.module.css";
 import styles1 from "./DesktopAboutPage.module.css";
 import { BsGithub, BsTwitterX, BsFacebook } from "react-icons/bs";
 import Link from "next/link";
-import { WiDayThunderstorm } from "react-icons/wi";
 
 export default function DesktopAboutPage() {
   return (
