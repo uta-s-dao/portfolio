@@ -100,9 +100,10 @@
   );
 
   /* スタイル */
+  align-self: flex-start;
   display: inline-block;
   margin-bottom: 7em;
-  margin-left: calc(6vw - var(--torn-left-width));
+  margin-left: calc(10vw - var(--torn-left-width));
   margin-top: 14vh;
   position: relative;
 }
@@ -131,8 +132,8 @@
   display: inline-block;
   position: relative;
   z-index: 2;
-  padding: 0.4em;
-  padding-bottom: 3em;
+  padding: 0.2em;
+  padding-bottom: 1.5em;
 }
 .torn_left > div:nth-child(2):before,
 .torn_left > div:first-child:before {
@@ -164,7 +165,7 @@
 
 /* コンテンツの幅を制限 */
 .torn_container > div:nth-child(2) {
-  max-width: 90vw;
+  max-width: 80vw;
   width: auto;
   box-sizing: border-box;
 }
