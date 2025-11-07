@@ -3,7 +3,7 @@
   --torn-shadow-offset-x: -2px;
   --torn-shadow-offset-y: 2px;
   --torn-shadow-blur: 1px;
-  --torn-shadow-background-color: rgba(238, 194, 150, 0.9);
+  --torn-shadow-background-color: white;
   /* --torn-background-color: #f5e7c99c; */
   --torn-left-width: 19px;
   --torn-right-width: 19px;
