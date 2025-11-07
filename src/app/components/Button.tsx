@@ -1,4 +1,4 @@
-import Link from "next/link";
+import ViewTransitionLink from "./ViewTransitionLink";
 import { ReactNode } from "react";
 import styles from "../page.module.css";
 
@@ -14,9 +14,9 @@ const Button = ({ href, children, active, ...props }: ButtonProps) => {
     : styles.buttonLink;
 
   return (
-    <Link href={href} className={className} {...props}>
+    <ViewTransitionLink href={href} className={className} {...props}>
       {children}
-    </Link>
+    </ViewTransitionLink>
   );
 };
 

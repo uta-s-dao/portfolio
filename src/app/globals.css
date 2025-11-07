@@ -10,3 +10,28 @@ body {
   height: 100%;
   background-color: whitesmoke;
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 1s;
+}
+
+::view-transition-old(root) {
+  animation-name: slide-out-left;
+}
+
+::view-transition-new(root) {
+  animation-name: slide-in-right;
+}
+
+@keyframes slide-out-left {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+}
