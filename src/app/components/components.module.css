@@ -29,7 +29,7 @@
 
 .desktopNavWrapper {
   background-attachment: fixed;
-  background-image: url(/desk.png);
+  background-image: url(/desk-optimized.jpg);
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -41,12 +41,12 @@
 }
 
 .desktopNavWrapperAbout {
-  background-image: url(/about.jpg);
+  background-image: url(/about-optimized.jpg);
 }
 
 .desktopOnly {
   align-items: center;
-  background-image: url(/desk.png);
+  background-image: url(/desk-optimized.jpg);
   background-size: cover;
   background-attachment: fixed;
   flex-direction: column;
