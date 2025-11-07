@@ -5,7 +5,7 @@
   --torn-shadow-blur: 1px;
   --torn-shadow-background-color: rgba(0, 0, 0, 0.25);
   /* --torn-background-color: #f5e7c99c; */
-  --torn-background-color: #fff6e49c;
+  --torn-background-color: #f1ebddf8;
   --torn-left-width: 19px;
   --torn-right-width: 19px;
   --torn-left-clip-path: polygon(
@@ -103,7 +103,7 @@
   display: inline-block;
   margin-bottom: 7em;
   margin-left: calc(6vw - var(--torn-left-width));
-  margin-top: 7vh;
+  margin-top: 14vh;
   position: relative;
 }
 .torn_container > div:first-child {

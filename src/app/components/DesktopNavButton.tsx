@@ -20,38 +20,12 @@ export default function DesktopNavButton() {
     }
   }, [pathname]);
 
-  const isAboutPage = pathname === "/about" || pathname.startsWith("/works/");
-
   return (
     <>
-      <div
-        className={styles.desktopNav}
-        style={
-          isAboutPage
-            ? {
-                zIndex: 100,
-                backgroundColor: "whitesmoke",
-                top: 0,
-                height: "12vh",
-                position: "fixed",
-              }
-            : {}
-        }
-      >
-        <div
-          className={styles.title}
-          style={
-            isAboutPage ? { zIndex: 100, backgroundColor: "whitesmoke" } : {}
-          }
-        >
-          {currentPath}
-        </div>
-        <div
-          className={styles.navigation}
-          style={
-            isAboutPage ? { zIndex: 100, backgroundColor: "whitesmoke" } : {}
-          }
-        >
+      <div className={styles.desktopNavWrapper}></div>
+      <div className={styles.desktopNav}>
+        <div className={styles.title}>{currentPath}</div>
+        <div className={styles.navigation}>
           <Button
             href='/'
             active={currentPath === "Home" || currentPath === ""}
