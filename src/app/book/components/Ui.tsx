@@ -185,7 +185,7 @@ export const UI = () => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <nav className={styles.navigation}>
+      <div className={styles.navigation}>
         <button
           className={`${styles.fusen} ${
             fusenAnimated ? styles.fusenAnimated : ""
@@ -227,7 +227,7 @@ export const UI = () => {
             <IoIosArrowForward />
           </button>
         </div>
-      </nav>
+      </div>
     </main>
   );
 };

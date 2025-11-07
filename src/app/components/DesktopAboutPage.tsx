@@ -2,26 +2,11 @@ import styles from "./components.module.css";
 import styles1 from "./DesktopAboutPage.module.css";
 import { BsGithub, BsTwitterX, BsFacebook } from "react-icons/bs";
 import Link from "next/link";
-import { WiDayThunderstorm } from "react-icons/wi";
 
 export default function DesktopAboutPage() {
   return (
     <>
-      <div
-        className={styles.desktopOnly}
-        style={{ alignItems: "flex-start", paddingLeft: 0 }}
-      >
-        <div
-          style={{
-            width: "100vw",
-            height: "15vh",
-            backgroundColor: "whitesmoke",
-            position: "absolute",
-            top: 0,
-            left: 0,
-            zIndex: 3,
-          }}
-        ></div>
+      <div className={styles.desktopOnly}>
         <div
           className={`${styles1.torn_container} ${styles1.torn_left} ${styles1.torn_right}`}
         >
