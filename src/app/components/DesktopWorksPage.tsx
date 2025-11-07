@@ -7,7 +7,6 @@ export default function DesktopWorksPage() {
       <div className={styles.desktopOnly}>
         <Book />
       </div>
-      ;
     </>
   );
 }

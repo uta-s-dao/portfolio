@@ -29,14 +29,25 @@
 
 .desktopOnly {
   align-items: center;
-  background-color: whitesmoke;
-  display: none;
+  background-image: url(/desk.png);
+  background-size: cover;
+  background-attachment: fixed;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: center;
   margin: 0;
   padding: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
+}
+
+.desktopOnly::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 0;
 }
 
 .detail {
