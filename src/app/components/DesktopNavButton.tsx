@@ -22,7 +22,11 @@ export default function DesktopNavButton() {
 
   return (
     <>
-      <div className={styles.desktopNavWrapper}></div>
+      <div
+        className={`${styles.desktopNavWrapper} ${
+          currentPath === "About" ? styles.desktopNavWrapperAbout : ""
+        }`}
+      ></div>
       <div className={styles.desktopNav}>
         <div className={styles.title}>{currentPath}</div>
         <div className={styles.navigation}>

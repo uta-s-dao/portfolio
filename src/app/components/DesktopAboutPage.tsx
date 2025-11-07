@@ -6,7 +6,8 @@ import Link from "next/link";
 export default function DesktopAboutPage() {
   return (
     <>
-      <div className={styles.desktopOnly}>
+      <div className={styles1.aboutBackground}></div>
+      <div className={`${styles.desktopOnly} ${styles1.desktopOnlyAbout}`}>
         <div
           className={`${styles1.torn_container} ${styles1.torn_left} ${styles1.torn_right}`}
         >
