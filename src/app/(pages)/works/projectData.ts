@@ -56,7 +56,6 @@ export const projects: ProjectData[] = [
     ],
     links: {
       github: "https://github.com/uta-s-dao/haram-checker",
-      demo: "https://haram-checker.vercel.app",
     },
   },
   {
