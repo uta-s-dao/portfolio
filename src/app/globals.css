@@ -36,25 +36,53 @@ html[data-direction="backward"]::view-transition-new(root) {
 
 /* Animations */
 @keyframes slide-out-left {
-  to {
-    transform: translateX(-100%);
+  0% {
+    transform: translateZ(0px);
+    visibility: visible;
+  }
+  40% {
+    transform: translate(-40%, 0) scale(0.8) rotateY(20deg);
+  }
+  100% {
+    transform: translateZ(-200px);
+    visibility: hidden;
   }
 }
 
 @keyframes slide-in-right {
-  from {
-    transform: translateX(100%);
+  0% {
+    transform: translateZ(-200px);
+  }
+  40% {
+    transform: translate(40%, 0) scale(0.8) rotateY(-20deg);
+  }
+  100% {
+    transform: translateZ(0px);
   }
 }
 
 @keyframes slide-out-right {
-  to {
-    transform: translateX(100%);
+  0% {
+    transform: translateZ(0px);
+    visibility: visible;
+  }
+  40% {
+    transform: translate(40%, 0) scale(0.8) rotateY(-20deg);
+  }
+  100% {
+    transform: translateZ(-200px);
+    visibility: hidden;
   }
 }
 
 @keyframes slide-in-left {
-  from {
-    transform: translateX(-100%);
+  0% {
+    transform: translateZ(-200px);
+  }
+  40% {
+    transform: translate(-40%, 0) scale(0.8) rotateY(20deg);
+  }
+  100% {
+    transform: translateZ(0px);
   }
 }

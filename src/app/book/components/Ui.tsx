@@ -174,7 +174,21 @@ export const UI = () => {
 
     const projectId = projectIdMap[currentTitle];
     if (projectId) {
-      router.push(`/works/${projectId}`);
+      const targetPath = `/works/${projectId}`;
+
+      // Set direction as forward (from /works to /works/[id])
+      document.documentElement.dataset.direction = "forward";
+
+      // Check if browser supports View Transitions API
+      if ("startViewTransition" in document) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (document as any).startViewTransition(() => {
+          router.push(targetPath);
+        });
+      } else {
+        // Fallback for browsers that don't support View Transitions
+        router.push(targetPath);
+      }
     }
   };
 

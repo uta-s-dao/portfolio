@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { getProjectById, projects } from "../projectData";
 import Image from "next/image";
-import Link from "next/link";
+import ViewTransitionLink from "../../../components/ViewTransitionLink";
 import styles from "./page.module.css";
 import styles1 from "../../../components/components.module.css";
 import { BsGithub } from "react-icons/bs";
@@ -29,12 +29,12 @@ export default async function ProjectDetailPage({
     <div className={styles1.desktopOnly}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <Link href='/works' className={styles.backButton}>
+          <ViewTransitionLink href='/works' className={styles.backButton}>
             <IoArrowBack
               style={{ width: "2vw", height: "2vw" }}
               color='black'
             />
-          </Link>
+          </ViewTransitionLink>
           <h2 className={styles.fusen}>{project.name}</h2>
         </div>
 

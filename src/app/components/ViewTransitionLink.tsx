@@ -10,6 +10,7 @@ type ViewTransitionLinkProps = ComponentPropsWithoutRef<typeof NextLink>;
 const PAGE_ORDER: Record<string, number> = {
   "/": 0,
   "/works": 1,
+  "/works/detail": 1.5, // Detail pages are between /works and /about
   "/about": 2,
 };
 
@@ -30,7 +31,12 @@ export default function ViewTransitionLink({
     const normalizePathForDirection = (path: string) => {
       // Extract the first segment after '/'
       const segments = path.split("/").filter(Boolean);
-      return segments.length === 0 ? "/" : `/${segments[0]}`;
+      if (segments.length === 0) return "/";
+      // Handle /works/[id] detail pages
+      if (segments[0] === "works" && segments.length > 1) {
+        return "/works/detail";
+      }
+      return `/${segments[0]}`;
     };
 
     const normalizedCurrent = normalizePathForDirection(pathname);
