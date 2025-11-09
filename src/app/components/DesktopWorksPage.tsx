@@ -4,8 +4,10 @@ import Book from "../book/page";
 export default function DesktopWorksPage() {
   return (
     <>
-      <div className={styles.desktopOnly}>
-        <Book />
+      <div className='desktopLayout'>
+        <div className={styles.desktopOnly}>
+          <Book />
+        </div>
       </div>
     </>
   );

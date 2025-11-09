@@ -37,6 +37,11 @@ export default function MobileNavButton() {
 
   return (
     <>
+      <div
+        className={`${styles.mobileNavWrapper} ${
+          currentPath === "About" ? styles.mobileNavWrapperAbout : ""
+        }`}
+      ></div>
       <div className={styles.mobileNav}>
         <div className={styles.mobilenavlocation}>
           <div className={styles.mobiletitle}>{currentPath}</div>
