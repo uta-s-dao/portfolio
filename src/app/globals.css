@@ -10,3 +10,81 @@ body {
   height: 100%;
   background-color: whitesmoke;
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.8s;
+}
+
+/* Forward direction (Home → Works → Abouty) */
+html[data-direction="forward"]::view-transition-old(root) {
+  animation-name: slide-to-left;
+}
+
+html[data-direction="forward"]::view-transition-new(root) {
+  animation-name: slide-from-right;
+}
+
+/* Backward direction (About → Works → Home) */
+html[data-direction="backward"]::view-transition-old(root) {
+  animation-name: slide-to-right;
+}
+
+html[data-direction="backward"]::view-transition-new(root) {
+  animation-name: slide-from-left;
+}
+
+/* Animations */
+@keyframes slide-to-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-from-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-to-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slide-from-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-from-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-to-top {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

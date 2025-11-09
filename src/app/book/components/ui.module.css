@@ -12,7 +12,7 @@
 .navigation {
   margin-top: 15vh;
   pointer-events: auto;
-  animation: slideIn 0.5s ease-out;
+  animation: slideIn 0.8s ease-out 0.1s backwards;
   z-index: 10;
 }
 
@@ -63,35 +63,13 @@
 
 /* アニメーション定義 */
 @keyframes slideIn {
-  from {
-    transform: translateX(-100%);
+  0% {
+    transform: translateY(-100%);
     opacity: 0;
   }
-  to {
-    transform: translateX(0);
+  100% {
+    transform: translateY(0);
     opacity: 1;
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.4);
-  }
-}
-
-@keyframes flip {
-  0% {
-    transform: rotateY(0deg) scale(1);
-  }
-  50% {
-    transform: rotateY(90deg) scale(0.8);
-  }
-  100% {
-    transform: rotateY(0deg) scale(1);
   }
 }
 
@@ -200,27 +178,5 @@
   100% {
     opacity: 0;
     transform: translateY(25px) scale(1);
-  }
-}
-
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-  .navigation {
-    padding: 12px;
-  }
-
-  .pageButton {
-    padding: 10px 14px;
-    font-size: 12px;
-  }
-
-  .navButton {
-    font-size: 20px;
-    padding: 6px 10px;
-  }
-
-  .pageIndicator {
-    font-size: 12px;
-    min-width: 50px;
   }
 }
