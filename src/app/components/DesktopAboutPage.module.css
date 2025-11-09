@@ -197,3 +197,18 @@
 .desktopOnlyAbout {
   background-image: none !important;
 }
+
+.animation {
+  animation: slideIn 0.8s ease-out 0.3s backwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
