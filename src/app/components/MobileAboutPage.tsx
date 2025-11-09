@@ -1,11 +1,13 @@
 import styles from "./components.module.css";
+import styles1 from "./MobileAboutPage.module.css";
 import { BsGithub, BsTwitterX, BsFacebook } from "react-icons/bs";
 import Link from "next/link";
 
 export default function MobileAboutPage() {
   return (
     <>
-      <div className={styles.mobileOnly}>
+      <div className='mobileLayout'>
+        <div className={styles1.aboutBackground}></div>
         <div className={styles.mobileDetail}>
           Hey, My name is Yuta Saruwatari. I specialize in building web
           applications and have a passion for creating seamless user experiences
@@ -15,7 +17,8 @@ export default function MobileAboutPage() {
         <div className={styles.mobileDetail}>
           Frontend:
           <span className={styles.span}>
-            HTML / CSS / Tailwindcss / JavaSript / TypeScript / React / Next.js / Affinity by Canva
+            HTML / CSS / Tailwindcss / JavaSript / TypeScript / React / Next.js
+            / Affinity by Canva
           </span>
         </div>
         <div className={styles.mobileDetail}>

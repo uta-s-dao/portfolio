@@ -108,6 +108,9 @@
   padding: 8px 16px;
   position: relative;
   text-decoration: none;
+  text-align: center;
+  font-size: x-large;
+  color: rgb(85, 84, 84);
 }
 
 .menuList {
@@ -135,26 +138,24 @@
 }
 
 .menubutton {
-  background-color: whitesmoke;
+  background-color: transparent;
   border: none;
   margin-left: auto;
-  padding-right: 4vw;
-  padding-top: 1vh;
-  z-index: 1000;
+  margin-right: 4vw;
+  margin-top: 1vh;
+  z-index: 200;
 }
 
 .mobileDetail {
-  background-color: whitesmoke;
   color: rgb(85, 84, 84);
   display: flex;
-  font-size: 2vh;
+  font-size: 2.5vh;
   gap: 1rem;
   padding-left: 2vw;
   padding-top: 2vh;
 }
 
 .mobileIcon {
-  background-color: whitesmoke;
   display: flex;
   gap: 3rem;
   justify-content: center;
@@ -164,40 +165,30 @@
 }
 
 .mobileMyname {
-  background-color: whitesmoke;
   color: rgb(85, 84, 84);
-  font-size: 4vh;
+  font-size: 4.5vh;
   padding-left: 2vw;
   padding-top: 5vh;
 }
 
 .mobileNav {
-  background-color: whitesmoke;
   display: block;
-  width: 100vw;
-}
-
-.mobileOnly {
-  background-color: whitesmoke;
-  display: block;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
   width: 100vw;
 }
 
 .mobiletitle {
-  background-color: whitesmoke;
   color: rgb(85, 84, 84);
   font-size: 6vh;
   font-weight: bold;
   padding-left: 3vw;
   padding-top: 1vh;
+  z-index: 200;
 }
 
 .mobilenavlocation {
   display: flex;
   padding-right: 3vw;
+  padding-bottom: 1vh;
 }
 
 .myname {
@@ -218,13 +209,13 @@
 .overlay {
   animation: fadeIn 0.3s ease;
   backdrop-filter: blur(5px);
-  background: rgba(245, 245, 245, 0.7);
+  background: rgba(148, 146, 146, 0.7);
   bottom: 0;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 998;
+  z-index: 150;
   -webkit-backdrop-filter: blur(5px);
 }
 
@@ -233,11 +224,11 @@
   height: 100vh;
   overflow-y: auto;
   position: fixed;
-  right: -150px;
+  right: -50vw;
   top: 0;
   transition: right 0.3s ease;
-  width: 150px;
-  z-index: 999;
+  width: 50vw;
+  z-index: 150;
 }
 
 .sideMenu.open {
