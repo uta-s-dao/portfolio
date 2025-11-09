@@ -17,6 +17,7 @@ const PAGE_ORDER: Record<string, number> = {
 export default function ViewTransitionLink({
   href,
   children,
+  onClick,
   ...props
 }: ViewTransitionLinkProps) {
   const router = useRouter();
@@ -24,6 +25,9 @@ export default function ViewTransitionLink({
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+
+    // Call the passed onClick handler if it exists
+    onClick?.(e);
 
     const targetPath = href.toString();
 

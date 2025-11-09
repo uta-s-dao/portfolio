@@ -3,9 +3,9 @@
 import styles from "./components.module.css";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import ViewTransitionLink from "./ViewTransitionLink";
 import { IoIosMenu } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
+import Button from "./Button";
 
 const menuItems = [
   { name: "Home", href: "/" },
@@ -66,7 +66,7 @@ export default function MobileNavButton() {
         <ul className={styles.menuList}>
           {menuItems.map((item) => (
             <li key={item.href} className={styles.menuItem}>
-              <ViewTransitionLink
+                  <Button
                 href={item.href}
                 className={`${styles.menuLink} ${
                   pathname === item.href ? styles.active : ""
@@ -74,7 +74,7 @@ export default function MobileNavButton() {
                 onClick={handleLinkClick}
               >
                 <span className={styles.menuText}>{item.name}</span>
-              </ViewTransitionLink>
+              </Button>
             </li>
           ))}
         </ul>
