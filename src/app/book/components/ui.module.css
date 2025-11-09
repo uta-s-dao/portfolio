@@ -12,7 +12,7 @@
 .navigation {
   margin-top: 15vh;
   pointer-events: auto;
-  animation: slideIn 0.8s ease-out 0.8s backwards;
+  animation: slideIn 0.8s ease-out 0.1s backwards;
   z-index: 10;
 }
 
