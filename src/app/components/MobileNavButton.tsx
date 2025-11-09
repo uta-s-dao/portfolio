@@ -20,10 +20,15 @@ export default function MobileNavButton() {
 
   useEffect(() => {
     if (pathname) {
-      const lastSlashIndex = pathname.lastIndexOf("/");
-      const tmp = pathname.slice(lastSlashIndex + 1);
-      const capitalized = tmp.charAt(0).toUpperCase() + tmp.slice(1);
-      setCurrentPath(capitalized);
+      // /works配下のパスは全て"Works"と表示
+      if (pathname.startsWith("/works")) {
+        setCurrentPath("Works");
+      } else {
+        const lastSlashIndex = pathname.lastIndexOf("/");
+        const tmp = pathname.slice(lastSlashIndex + 1);
+        const capitalized = tmp.charAt(0).toUpperCase() + tmp.slice(1);
+        setCurrentPath(capitalized);
+      }
     }
   }, [pathname]);
 
