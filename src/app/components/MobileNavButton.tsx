@@ -3,9 +3,9 @@
 import styles from "./components.module.css";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import ViewTransitionLink from "./ViewTransitionLink";
 import { IoIosMenu } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
+import Button from "./Button";
 
 const menuItems = [
   { name: "Home", href: "/" },
@@ -20,10 +20,15 @@ export default function MobileNavButton() {
 
   useEffect(() => {
     if (pathname) {
-      const lastSlashIndex = pathname.lastIndexOf("/");
-      const tmp = pathname.slice(lastSlashIndex + 1);
-      const capitalized = tmp.charAt(0).toUpperCase() + tmp.slice(1);
-      setCurrentPath(capitalized);
+      // /works配下のパスは全て"Works"と表示
+      if (pathname.startsWith("/works")) {
+        setCurrentPath("Works");
+      } else {
+        const lastSlashIndex = pathname.lastIndexOf("/");
+        const tmp = pathname.slice(lastSlashIndex + 1);
+        const capitalized = tmp.charAt(0).toUpperCase() + tmp.slice(1);
+        setCurrentPath(capitalized);
+      }
     }
   }, [pathname]);
 
@@ -37,6 +42,11 @@ export default function MobileNavButton() {
 
   return (
     <>
+      <div
+        className={`${styles.mobileNavWrapper} ${
+          currentPath === "About" ? styles.mobileNavWrapperAbout : ""
+        }`}
+      ></div>
       <div className={styles.mobileNav}>
         <div className={styles.mobilenavlocation}>
           <div className={styles.mobiletitle}>{currentPath}</div>
@@ -56,7 +66,7 @@ export default function MobileNavButton() {
         <ul className={styles.menuList}>
           {menuItems.map((item) => (
             <li key={item.href} className={styles.menuItem}>
-              <ViewTransitionLink
+                  <Button
                 href={item.href}
                 className={`${styles.menuLink} ${
                   pathname === item.href ? styles.active : ""
@@ -64,7 +74,7 @@ export default function MobileNavButton() {
                 onClick={handleLinkClick}
               >
                 <span className={styles.menuText}>{item.name}</span>
-              </ViewTransitionLink>
+              </Button>
             </li>
           ))}
         </ul>

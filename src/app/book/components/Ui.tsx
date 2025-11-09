@@ -1,3 +1,5 @@
+"use client";
+
 import { atom, useAtom } from "jotai";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";

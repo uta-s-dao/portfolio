@@ -25,7 +25,7 @@ export default function Book() {
             zIndex: 100,
           }}
         >
-          <group position-y={-0.1} position-x={0.2}>
+          <group position-y={-0.1} position-x={0.6}>
             <Suspense fallback={null}>
               <Experience />
             </Suspense>

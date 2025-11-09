@@ -101,8 +101,8 @@
   align-self: flex-start;
   display: inline-block;
   margin-bottom: 7em;
-  margin-left: calc(10vw - var(--torn-left-width));
-  margin-top: 14vh;
+  margin-left: calc(15vw - var(--torn-left-width));
+  margin-top: 2vh;
   position: relative;
 }
 .torn_container > div:first-child {

@@ -12,7 +12,7 @@
 .navigation {
   margin-top: 15vh;
   pointer-events: auto;
-  animation: slideIn 0.8s ease-out 0.1s backwards;
+  animation: slideIn 0.8s ease-out 0.3s backwards;
   z-index: 10;
 }
 
@@ -178,5 +178,35 @@
   100% {
     opacity: 0;
     transform: translateY(25px) scale(1);
+  }
+}
+
+/* モバイル版のスタイル調整 */
+@media (max-width: 767px) {
+  .uiContainer {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navigation {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .fusen {
+    font-size: 4vh;
+    padding: 2vw 4vw;
+    white-space: nowrap;
+  }
+
+  .pageControls {
+    justify-content: center;
+    margin-top: 12px;
+    margin-left: 0;
   }
 }

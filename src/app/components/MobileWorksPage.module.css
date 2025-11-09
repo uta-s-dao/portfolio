@@ -1,0 +1,57 @@
+.mobileWorksContainer {
+  width: 100%;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+  animation: slideIn 0.8s ease-out 0.3s backwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.projectCard {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projectCard:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.projectImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #f5f5f5;
+}
+
+.projectTitle {
+  padding: 1rem;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(85, 84, 84);
+  text-align: center;
+}

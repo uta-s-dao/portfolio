@@ -6,15 +6,19 @@ interface ButtonProps {
   href: string;
   children: ReactNode;
   active?: boolean;
+  className?: string;
+  onClick?: () => void;
 }
 
-const Button = ({ href, children, active, ...props }: ButtonProps) => {
-  const className = active
+const Button = ({ href, children, active, className: customClassName, onClick, ...props }: ButtonProps) => {
+  const className = customClassName
+    ? customClassName
+    : active
     ? `${styles.buttonLink} ${styles.buttonActive}`
     : styles.buttonLink;
 
   return (
-    <ViewTransitionLink href={href} className={className} {...props}>
+    <ViewTransitionLink href={href} className={className} onClick={onClick} {...props}>
       {children}
     </ViewTransitionLink>
   );
