@@ -12,6 +12,7 @@ export default function DesktopAboutPage() {
           <div
             className={`${styles1.torn_container} ${styles1.torn_left} ${styles1.torn_right}`}
           >
+            <div></div>
             <div>
               <div className={styles.detail}>
                 Hey, My name is Yuta Saruwatari. I specialize in building web
