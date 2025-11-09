@@ -14,6 +14,7 @@ export default function DesktopAboutPage() {
           >
             <div></div>
             <div>
+              <div className={styles.firstMyname}>Yuta Saruwatari</div>
               <div className={styles.detail}>
                 Hey, My name is Yuta Saruwatari. I specialize in building web
                 applications and have a passion for creating seamless user

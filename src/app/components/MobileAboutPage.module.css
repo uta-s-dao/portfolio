@@ -4,7 +4,6 @@
   --torn-shadow-offset-y: 2px;
   --torn-shadow-blur: 1px;
   --torn-shadow-background-color: rgb(255, 255, 255, 0.8);
-  /* --torn-background-color: #f5e7c99c; */
   --torn-left-width: 19px;
   --torn-right-width: 19px;
   --torn-left-clip-path: polygon(
@@ -102,8 +101,8 @@
   align-self: flex-start;
   display: inline-block;
   margin-bottom: 7em;
-  margin-left: calc(10vw - var(--torn-left-width));
-  margin-top: 14vh;
+  margin-left: calc(15vw - var(--torn-left-width));
+  margin-top: 2vh;
   position: relative;
 }
 .torn_container > div:first-child {
