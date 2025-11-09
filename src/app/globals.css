@@ -13,76 +13,78 @@ body {
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 2s;
+  animation-duration: 0.8s;
 }
 
-/* Forward direction (Home → Works → About) */
+/* Forward direction (Home → Works → Abouty) */
 html[data-direction="forward"]::view-transition-old(root) {
-  animation-name: slide-out-left;
+  animation-name: slide-to-left;
 }
 
 html[data-direction="forward"]::view-transition-new(root) {
-  animation-name: slide-in-right;
+  animation-name: slide-from-right;
 }
 
 /* Backward direction (About → Works → Home) */
 html[data-direction="backward"]::view-transition-old(root) {
-  animation-name: slide-out-right;
+  animation-name: slide-to-right;
 }
 
 html[data-direction="backward"]::view-transition-new(root) {
-  animation-name: slide-in-left;
+  animation-name: slide-from-left;
 }
 
 /* Animations */
-@keyframes slide-out-left {
-  0% {
-    transform: translateZ(0px);
-    visibility: visible;
+@keyframes slide-to-left {
+  from {
+    transform: translateX(0);
   }
-  40% {
-    transform: translate(-40%, 0) scale(0.8) rotateY(20deg);
-  }
-  100% {
-    transform: translateZ(-200px);
-    visibility: hidden;
+  to {
+    transform: translateX(-100%);
   }
 }
 
-@keyframes slide-in-right {
-  0% {
-    transform: translateZ(-200px);
+@keyframes slide-from-right {
+  from {
+    transform: translateX(100%);
   }
-  40% {
-    transform: translate(40%, 0) scale(0.8) rotateY(-20deg);
-  }
-  100% {
-    transform: translateZ(0px);
+  to {
+    transform: translateX(0);
   }
 }
 
-@keyframes slide-out-right {
-  0% {
-    transform: translateZ(0px);
-    visibility: visible;
+@keyframes slide-to-right {
+  from {
+    transform: translateX(0);
   }
-  40% {
-    transform: translate(40%, 0) scale(0.8) rotateY(-20deg);
-  }
-  100% {
-    transform: translateZ(-200px);
-    visibility: hidden;
+  to {
+    transform: translateX(100%);
   }
 }
 
-@keyframes slide-in-left {
-  0% {
-    transform: translateZ(-200px);
+@keyframes slide-from-left {
+  from {
+    transform: translateX(-100%);
   }
-  40% {
-    transform: translate(-40%, 0) scale(0.8) rotateY(20deg);
+  to {
+    transform: translateX(0);
   }
-  100% {
-    transform: translateZ(0px);
+}
+
+@keyframes slide-from-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-to-top {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
