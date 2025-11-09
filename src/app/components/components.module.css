@@ -103,6 +103,13 @@
   z-index: 10;
 }
 
+.worksPageContainer {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  z-index: 10;
+}
+
 .detail {
   color: rgb(85, 84, 84);
   font-size: 3vh;
