@@ -36,17 +36,6 @@ export default async function ProjectDetailPage({
         </div>
 
         <div className={styles.content}>
-          <div className={styles.imageSection}>
-            <Image
-              src={project.images.detail}
-              alt={project.name}
-              width={800}
-              height={600}
-              className={styles.detailImage}
-              priority
-            />
-          </div>
-
           <div className={styles.infoSection}>
             <h2>プロジェクト概要</h2>
             <div className={styles.description}>{project.description}</div>
@@ -101,6 +90,17 @@ export default async function ProjectDetailPage({
                 </div>
               </div>
             )}
+          </div>
+
+          <div className={styles.imageSection}>
+            <Image
+              src={project.images.detail}
+              alt={project.name}
+              width={800}
+              height={600}
+              className={styles.detailImage}
+              priority
+            />
           </div>
         </div>
       </div>
