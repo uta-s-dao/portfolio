@@ -143,7 +143,7 @@ const Page = ({ number, front, back, page, opened, bookClosed }: PageProps) => {
               roughnessMap: pictureRoughness,
             }
           : {
-              roughness: 0.4,
+              roughness: 0.17,
             }),
       }),
       new MeshStandardMaterial({
@@ -153,7 +153,7 @@ const Page = ({ number, front, back, page, opened, bookClosed }: PageProps) => {
               roughnessMap: pictureRoughnessBack,
             }
           : {
-              roughness: 0.4,
+              roughness: 0.17,
             }),
       }),
     ];
