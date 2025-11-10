@@ -5,7 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { Experience } from "./components/Experience";
 import { UI } from "./components/Ui";
-import styles from "./page.module.css";
+import styles from "./book.module.css";
 
 export default function Book() {
   return (

@@ -90,8 +90,8 @@ const pageMaterials = [
 ];
 
 pages.forEach((page) => {
-  useTexture.preload(`/textures/${page.front}.png`);
-  useTexture.preload(`/textures/${page.back}.png`);
+  useTexture.preload(`/works/${page.front}.png`);
+  useTexture.preload(`/works/${page.back}.png`);
 });
 
 interface PageProps {
@@ -106,10 +106,10 @@ interface PageProps {
 const Page = ({ number, front, back, page, opened, bookClosed }: PageProps) => {
   const [picture, picture2, pictureRoughness, pictureRoughnessBack] =
     useTexture([
-      `/textures/${front}.png`,
-      `/textures/${back}.png`,
-      `/textures/book-cover.png`,
-      `/textures/book-back-cover.png`,
+      `/works/${front}.png`,
+      `/works/${back}.png`,
+      `/works/book-cover.png`,
+      `/works/book-back-cover.png`,
     ]);
   picture.colorSpace = picture2.colorSpace = SRGBColorSpace;
   const group = useRef<Group>(null!);
@@ -143,7 +143,7 @@ const Page = ({ number, front, back, page, opened, bookClosed }: PageProps) => {
               roughnessMap: pictureRoughness,
             }
           : {
-              roughness: 0.4,
+              roughness: 0.17,
             }),
       }),
       new MeshStandardMaterial({
@@ -153,7 +153,7 @@ const Page = ({ number, front, back, page, opened, bookClosed }: PageProps) => {
               roughnessMap: pictureRoughnessBack,
             }
           : {
-              roughness: 0.4,
+              roughness: 0.17,
             }),
       }),
     ];

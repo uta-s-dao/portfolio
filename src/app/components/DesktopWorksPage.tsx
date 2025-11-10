@@ -1,5 +1,5 @@
 import styles from "./components.module.css";
-import Book from "../book/page";
+import Book from "./book/Book";
 
 export default function DesktopWorksPage() {
   return (
