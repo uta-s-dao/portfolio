@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import styles1 from "../../../components/components.module.css";
 import { BsGithub } from "react-icons/bs";
 import { IoArrowBack } from "react-icons/io5";
+import { GrBaby } from "react-icons/gr";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -30,7 +31,7 @@ export default async function ProjectDetailPage({
       <div className={styles.container}>
         <div className={styles.header}>
           <ViewTransitionLink href='/works' className={styles.backButton}>
-            <IoArrowBack className={styles.backIcon} color='black' />
+            <IoArrowBack className={styles.backIcon} />
           </ViewTransitionLink>
           <h2 className={styles.fusen}>{project.name}</h2>
         </div>
