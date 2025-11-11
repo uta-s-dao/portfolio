@@ -24,7 +24,13 @@
 
 .desktopNav {
   display: none;
+  height: 12vh;
   width: 100vw;
+  background-color: rgb(232, 233, 233);
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .desktopNavWrapper {

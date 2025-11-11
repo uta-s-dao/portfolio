@@ -27,7 +27,7 @@ export default function DesktopNavButton() {
           currentPath === "About" ? styles.desktopNavWrapperAbout : ""
         }`}
       ></div>
-      <div className={styles.desktopNav}>
+      <div className={`${currentPath === "About" ? styles.desktopNav : ""}`}>
         <div className={styles.title}>{currentPath}</div>
         <div className={styles.navigation}>
           <Button
