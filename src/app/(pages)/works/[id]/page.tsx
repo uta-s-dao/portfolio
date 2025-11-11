@@ -6,7 +6,6 @@ import styles from "./page.module.css";
 import styles1 from "../../../components/components.module.css";
 import { BsGithub } from "react-icons/bs";
 import { IoArrowBack } from "react-icons/io5";
-import { GrBaby } from "react-icons/gr";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
