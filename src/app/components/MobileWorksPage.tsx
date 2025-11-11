@@ -8,17 +8,17 @@ const projects = [
   {
     id: "openlive",
     title: "OpenLive",
-    image: "/textures/openlive.png",
+    image: "/works/openlive.png",
   },
   {
     id: "haral",
     title: "Haral",
-    image: "/textures/haral.png",
+    image: "/works/haral.png",
   },
   {
     id: "bitcoin",
     title: "Bitcoin",
-    image: "/textures/bitcoin.png",
+    image: "/works/bitcoin.png",
   },
 ];
 
