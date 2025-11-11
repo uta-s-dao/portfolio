@@ -102,7 +102,7 @@
   display: inline-block;
   margin-bottom: 7em;
   margin-left: calc(15vw - var(--torn-left-width));
-  margin-top: 2vh;
+  margin-top: 13vh;
   position: relative;
 }
 .torn_container > div:first-child {
@@ -204,7 +204,7 @@
 
 @keyframes slideIn {
   0% {
-    transform: translateY(-100%);
+    transform: translateY(-30%);
     opacity: 0;
   }
   100% {

@@ -30,7 +30,7 @@ export default async function ProjectDetailPage({
       <div className={styles.container}>
         <div className={styles.header}>
           <ViewTransitionLink href='/works' className={styles.backButton}>
-            <IoArrowBack className={styles.backIcon} color='black' />
+            <IoArrowBack className={styles.backIcon} />
           </ViewTransitionLink>
           <h2 className={styles.fusen}>{project.name}</h2>
         </div>
