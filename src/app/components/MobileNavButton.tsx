@@ -42,43 +42,49 @@ export default function MobileNavButton() {
 
   return (
     <>
-      <div
-        className={`${styles.mobileNavWrapper} ${
-          currentPath === "About" ? styles.mobileNavWrapperAbout : ""
-        }`}
-      ></div>
-      <div className={`${currentPath === "About" ? styles.mobileNav : ""}`}>
-        <div className={styles.mobilenavlocation}>
-          <div className={styles.mobiletitle}>{currentPath}</div>
+      <div className='mobileLayout'>
+        <div
+          className={`${styles.mobileNavWrapper} ${
+            currentPath === "About" ? styles.mobileNavWrapperAbout : ""
+          }`}
+        ></div>
+        <div
+          className={`${styles.mobileNav} ${
+            currentPath !== "About" ? styles.mobileNavDesk : ""
+          }`}
+        >
+          <div className={styles.mobilenavlocation}>
+            <div className={styles.mobiletitle}>{currentPath}</div>
+          </div>
         </div>
+        {menuOpen && <div className={styles.overlay} onClick={toggleMenu} />}
+        <nav className={`${styles.sideMenu} ${menuOpen ? styles.open : ""}`}>
+          <ul className={styles.menuList}>
+            {menuItems.map((item) => (
+              <li key={item.href} className={styles.menuItem}>
+                <Button
+                  href={item.href}
+                  className={`${styles.menuLink} ${
+                    pathname === item.href ? styles.active : ""
+                  }`}
+                  onClick={handleLinkClick}
+                >
+                  <span className={styles.menuText}>{item.name}</span>
+                </Button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <button onClick={toggleMenu} className={styles.menubutton}>
+          {menuOpen ? (
+            <>
+              <IoCloseOutline size={40} color='rgb(85, 84, 84)' />
+            </>
+          ) : (
+            <IoIosMenu size={40} color='rgb(85, 84, 84)' />
+          )}
+        </button>
       </div>
-      {menuOpen && <div className={styles.overlay} onClick={toggleMenu} />}
-      <nav className={`${styles.sideMenu} ${menuOpen ? styles.open : ""}`}>
-        <ul className={styles.menuList}>
-          {menuItems.map((item) => (
-            <li key={item.href} className={styles.menuItem}>
-              <Button
-                href={item.href}
-                className={`${styles.menuLink} ${
-                  pathname === item.href ? styles.active : ""
-                }`}
-                onClick={handleLinkClick}
-              >
-                <span className={styles.menuText}>{item.name}</span>
-              </Button>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <button onClick={toggleMenu} className={styles.menubutton}>
-        {menuOpen ? (
-          <>
-            <IoCloseOutline size={40} color='rgb(85, 84, 84)' />
-          </>
-        ) : (
-          <IoIosMenu size={40} color='rgb(85, 84, 84)' />
-        )}
-      </button>
     </>
   );
 }

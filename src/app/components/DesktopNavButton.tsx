@@ -22,26 +22,28 @@ export default function DesktopNavButton() {
 
   return (
     <>
-      <div
-        className={`${styles.desktopNavWrapper} ${
-          currentPath === "About" ? styles.desktopNavWrapperAbout : ""
-        }`}
-      ></div>
-      <div className={`${currentPath === "About" ? styles.desktopNav : ""}`}>
-        <div className={styles.title}>{currentPath}</div>
-        <div className={styles.navigation}>
-          <Button
-            href='/'
-            active={currentPath === "Home" || currentPath === ""}
-          >
-            Home
-          </Button>
-          <Button href='/works' active={currentPath === "Works"}>
-            Works
-          </Button>
-          <Button href='/about' active={currentPath === "About"}>
-            About
-          </Button>
+      <div className='desktopLayout'>
+        <div
+          className={`${styles.desktopNavWrapper} ${
+            currentPath === "About" ? styles.desktopNavWrapperAbout : ""
+          }`}
+        ></div>
+        <div className={`${currentPath === "About" ? styles.desktopNav : ""}`}>
+          <div className={styles.title}>{currentPath}</div>
+          <div className={styles.navigation}>
+            <Button
+              href='/'
+              active={currentPath === "Home" || currentPath === ""}
+            >
+              Home
+            </Button>
+            <Button href='/works' active={currentPath === "Works"}>
+              Works
+            </Button>
+            <Button href='/about' active={currentPath === "About"}>
+              About
+            </Button>
+          </div>
         </div>
       </div>
     </>

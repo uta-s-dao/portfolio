@@ -235,6 +235,12 @@
   left: 0;
 }
 
+.mobileNavDesk {
+  background-image: url(/desk-optimized.jpg);
+  background-size: cover;
+  background-position: center 2%;
+}
+
 .mobiletitle {
   color: rgb(85, 84, 84);
   font-size: 6vh;
