@@ -47,18 +47,9 @@ export default function MobileNavButton() {
           currentPath === "About" ? styles.mobileNavWrapperAbout : ""
         }`}
       ></div>
-      <div className={styles.mobileNav}>
+      <div className={`${currentPath === "About" ? styles.mobileNav : ""}`}>
         <div className={styles.mobilenavlocation}>
           <div className={styles.mobiletitle}>{currentPath}</div>
-          <button onClick={toggleMenu} className={styles.menubutton}>
-            {menuOpen ? (
-              <>
-                <IoCloseOutline size={40} color='rgb(85, 84, 84)' />
-              </>
-            ) : (
-              <IoIosMenu size={40} color='rgb(85, 84, 84)' />
-            )}
-          </button>
         </div>
       </div>
       {menuOpen && <div className={styles.overlay} onClick={toggleMenu} />}
@@ -66,7 +57,7 @@ export default function MobileNavButton() {
         <ul className={styles.menuList}>
           {menuItems.map((item) => (
             <li key={item.href} className={styles.menuItem}>
-                  <Button
+              <Button
                 href={item.href}
                 className={`${styles.menuLink} ${
                   pathname === item.href ? styles.active : ""
@@ -79,6 +70,15 @@ export default function MobileNavButton() {
           ))}
         </ul>
       </nav>
+      <button onClick={toggleMenu} className={styles.menubutton}>
+        {menuOpen ? (
+          <>
+            <IoCloseOutline size={40} color='rgb(85, 84, 84)' />
+          </>
+        ) : (
+          <IoIosMenu size={40} color='rgb(85, 84, 84)' />
+        )}
+      </button>
     </>
   );
 }
