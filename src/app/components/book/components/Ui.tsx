@@ -7,6 +7,8 @@ import styles from "./ui.module.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const pictures = [
+  "chess",
+  "chess_detail",
   "openlive",
   "openlive_detail",
   "haral",
@@ -17,6 +19,8 @@ const pictures = [
 
 // プロジェクトIDのマッピング
 const projectIdMap: { [key: string]: string } = {
+  chess: "chess",
+  chess_detail: "chess",
   openlive: "openlive",
   openlive_detail: "openlive",
   haral: "haral",
@@ -130,7 +134,7 @@ export const UI = () => {
         // 右矢印キー：次のページ
         if (page > Math.floor(pictures.length / 2)) return;
         setPage((prev) =>
-          Math.min(Math.floor(pictures.length + 2 / 2), prev + 1)
+          Math.min(Math.floor(pictures.length + 2 / 2), prev + 1),
         );
       }
     };

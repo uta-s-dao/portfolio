@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import styles from "./MobileWorksPage.module.css";
 
 const projects = [
+  { id: "chess", title: "自我チェス", image: "/works/chess.png" },
   {
     id: "openlive",
     title: "OpenLive",

@@ -16,6 +16,32 @@ export interface ProjectData {
 
 export const projects: ProjectData[] = [
   {
+    id: "chess",
+    name: "自我チェス",
+    description:
+      "音声認識とAIを組み合わせた3Dチェスゲーム。プレイヤーは音声コマンドで駒に指示を出しますが、各駒にはAIによって生成された「性格」があり、命令に従うかどうかを自ら判断します。React Three Fiberによる3D描画、Web Speech APIによる音声認識、バックエンドAPIとの連携でリアルタイムにAIが駒の行動を決定。ハッカソンで開発した実験的なゲーム体験を提供するアプリケーションです。",
+    images: {
+      thumbnail: "/works/chess.png",
+      detail: "/works/chess_detail.png",
+    },
+    technologies: [
+      "React",
+      "TypeScript",
+      "React Three Fiber",
+      "Three.js",
+      "Zustand",
+      "TanStack Query",
+      "Hono",
+      "Web Speech API",
+      "Vite",
+    ],
+    links: {
+      github: "https://github.com/uta-s-dao/hackz-ptera",
+      website: "https://chess.thirdlf03.com/",
+    },
+  },
+
+  {
     id: "openlive",
     name: "OpenLive",
     description:
@@ -87,12 +113,12 @@ export function getProjectById(id: string): ProjectData | undefined {
 }
 
 export function getProjectNameFromPicture(
-  pictureName: string
+  pictureName: string,
 ): string | undefined {
   const project = projects.find(
     (p) =>
       p.images.thumbnail.includes(pictureName) ||
-      p.images.detail.includes(pictureName)
+      p.images.detail.includes(pictureName),
   );
   return project?.id;
 }
